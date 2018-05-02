@@ -3,7 +3,7 @@
     <title>Amp JavaScript Example</title>
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1'>
 
-    <link href='/css/app.css' rel='stylesheet' />
+    <link href='src/css/app.css' rel='stylesheet' />
 
     <!--  Replace MOCK_KEY_RANDOM with your Amp Project Key -->
     <script type='text/javascript' src='https://amp.ai/libs/03016c7832d5db5c.js'></script>
@@ -23,14 +23,14 @@
         'Turkey': ['Adana', 'Ankara', 'Balıkesir', 'Bursa', 'Edirne', 'Istanbul', 'Ordu', 'Batman']
       };
 
-      const location = {
+      const loc = {
         country: countries[Math.round(Math.random(countries.length - 1))],
         region: regions[Math.round(Math.random(regions.length - 1))]
       };
       const newCustomer = Math.round(Math.random()) === 0 ? false : true;
 
       // Observe context
-      amp.observe('UserContext', { location, newCustomer });
+      amp.observe('UserContext', { location: loc, newCustomer });
 
       // Make decision
       const decision = amp.decide('AmpedCart', {
@@ -40,7 +40,19 @@
       });
     </script>
 
-    <div class="nav"></div>
-    <div class="main"></div>
+    <div class='nav'>
+      <div class='icon'>
+        <img src="src/images/icon.png" alt="icon">
+      </div>
+      <div class='title'>Amped Shopping</div>
+      <div class="actions">
+        <div class='cartBtn'>Shopping Cart - 0 Items</div>
+      </div>
+    </div>
+    <div class='main'>Loading ...</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src='src/templates.js'></script>
+    <script src='src/app.js'></script>
   </body>
 </html>

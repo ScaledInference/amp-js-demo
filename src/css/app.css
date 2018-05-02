@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.nav {
+  height: 64px;
+  background: #444;
+}
+.nav .icon {
+  float: left;
+  width: 10%;
+  margin: 10px;
+}
+.nav .icon img {
+  height: 44px;
+  margin: 0 10px;
+  border-radius: 22px;
+}
+.nav .title {
+  float: left;
+  height: inherit;
+  width: 60%;
+  line-height: 64px;
+  font-size: 24px;
+  color: white;
+}
+.nav .actions {
+  width: 20%;
+  max-height: 44px;
+  float: right;
+  margin: 10px;
+  overflow: hidden;
+}
+.nav .actions .cartBtn {
+  background: #2d95fa;
+  color: white;
+  text-align: center;
+  line-height: 44px;
+  cursor: pointer;
+}
+.nav .actions .cartBtn:hover {
+  background: #1670fa;
+}
+
+.main {
+  padding: 20px;
+}
+
+/*# sourceMappingURL=src/css/app.css.map */
