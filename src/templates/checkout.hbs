@@ -1,11 +1,61 @@
 <div class='checkout'>
   <div class='info'>
     <form action='/thank_you'>
-      <label for='firstName'></label>
-      <input id='firstName' type='text'>
+      <h2>Customer Information</h2>
+      <h3>Name</h3>
+      <div class="formRow">
+        <label for='firstName'></label>
+        <input id='firstName' type='text'>
+        <label for='lastName'></label>
+        <input id='lastName' type='text'>
+      </div>
+      <h3>Address</h3>
+      <div class="formRow">
+        <label for='address'></label>
+        <input id='address' type='text'>
+      </div>
+      <div class="formRow">
+        <label for='city'></label>
+        <input id='city' type='text'>
+        <label for='state'></label>
+        <input id='state' type='text'>
+        <label for='zip'></label>
+        <input id='zip' type='text'>
+      </div>
+      <h3>Payment Information</h3>
+      <div class="formRow">
+        <label for='card'></label>
+        <input id='card' type='text'>
+        <label for='expiration'></label>
+        <input id='expiration' type='text'>
+        <label for='ccv'></label>
+        <input id='ccv' type='text'>
+      </div>
     </form>
   </div>
   <div class='cart'>
+    <div class="items">
+      {{#each cart.items}}
+      <div class="item">
+        <div class="thumbnail">
+          <img src="images/products/{{id}}.jpg" alt="image">
+        </div>
+        <div class="desc">
+          <div class="name">{{name}}</div>
+          <div class="description">{{description}}</div>
+        </div>
+        <div class="quantity">{{quantity}}</div>
+        <div class="price">{{price}}</div>
+        <div class="subtotal">{{subtotal}}</div>
+      </div>
+      {{/each}}
+    </div>
 
+    <div class="summary">
+      <div class="total">{{cart.total}}</div>
+      <div class="discount">Order today and receive a discount of {{cart.discount}}%</div>
+      <div class="discountTotal">{{cart.discountTotal}}</div>
+      <div class="ctaBtn">Checkout</div>
+    </div>
   </div>
 </div>
