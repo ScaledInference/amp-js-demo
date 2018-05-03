@@ -70,8 +70,10 @@ function handleNavigation() {
     html = Handlebars.templates.checkout(shoppingCart);
     ctaBtn.textContent = 'Submit Order';
 
-    const checkoutBtn = document.querySelector('.checkoutBtn');
-    checkoutBtn.style.backgroundColor = decision.ctaColor;
+    setTimeout(() => {
+      const checkoutBtn = document.querySelector('.checkoutBtn');
+      checkoutBtn.style.backgroundColor = decision.ctaColor;
+    }, 500);
     break;
   
     case '#/thank_you':
