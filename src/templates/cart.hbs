@@ -26,8 +26,10 @@
 
   <div class="summary">
     <div class="total">{{cart.total}}</div>
+    {{#if cart.discount}}
     <div class="discount">Order today and receive a discount of {{cart.discount}}%</div>
     <div class="discountTotal">{{cart.discountTotal}}</div>
+    {{/if}}
     <div class="cartBtn">Checkout</div>
   </div>
 </div>

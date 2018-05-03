@@ -44,9 +44,13 @@
 
     <div class="summary">
       <div class="total">{{cart.total}}</div>
+      {{#if cart.discount}}
       <div class="discount">Discount of {{cart.discount}}%</div>
-      <div class="shipping">Free Shipping</div>
+      {{/if}}
+      <div class="shipping">Free Shipping if you order in {{cart.shipping}} minutes.</div>
+      {{#if cart.discount}}
       <div class="discountTotal">{{cart.discountTotal}}</div>
+      {{/if}}
     </div>
   </div>
 </div>

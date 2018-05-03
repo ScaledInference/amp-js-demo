@@ -26,4 +26,7 @@
       <div class="total">Total: ${{cart.discountTotal}}</div>
     </div>
   </div>
+  <script>
+    amp.observe('Sale', { amount: {{cart.discountTotal}} });
+  </script>
 </div>
