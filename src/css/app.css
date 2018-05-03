@@ -33,14 +33,14 @@
   margin: 10px;
   overflow: hidden;
 }
-.nav .actions .cartBtn {
+.nav .actions .ctaBtn {
   background: #2d95fa;
   color: white;
   text-align: center;
   line-height: 44px;
   cursor: pointer;
 }
-.nav .actions .cartBtn:hover {
+.nav .actions .ctaBtn:hover {
   background: #1670fa;
 }
 

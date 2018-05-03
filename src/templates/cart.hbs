@@ -1,3 +1,25 @@
 <div>
-  Cart
+  <h1>Shopping Cart</h1>
+  <div class="cart">
+    {{#each cart}}
+    <div class="item">
+      <div class="thumbnail">
+        <img src="images/products/{{id}}.jpg" alt="image">
+      </div>
+      <div class="desc">
+        <div class="name">{{name}}</div>
+        <div class="description">{{description}}</div>
+      </div>
+      <div class="price">{{price}}</div>
+    </div>
+    {{/each}}
+    <hr/>
+    <div class="summary">
+      <div class="subtotal"></div>
+      <div class="discount"></div>
+      <hr/>
+      <div class="total"></div>
+      <div class="checkoutBtn"></div>
+    </div>
+  </div>
 </div>
