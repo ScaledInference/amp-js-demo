@@ -143,7 +143,6 @@ function addEventsForProductPage() {
         // use Amp decision for free shipping
         cart.shipping = decision.freeShipping;
 
-        localStorage.setItem('cart', JSON.stringify(cart));
         document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
       });
     });
