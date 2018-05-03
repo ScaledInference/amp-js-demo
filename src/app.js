@@ -40,25 +40,32 @@ window.addEventListener('hashchange', (e) => {
 
 function handleNavigation() {
   let html;
+  const ctaBtn = document.querySelector('.ctaBtn');
 
   switch (location.hash) {
     case '/', '':
     html = addEventsForProductPage();
-    document.querySelector('.ctaBtn').textContent = `Cart - ${cart.items.length} Items`;
+    ctaBtn.textContent = `Cart - ${cart.items.length} Items`;
     break;
 
     case '#/cart':
     html = Handlebars.templates.cart(shoppingCart);
-    document.querySelector('.ctaBtn').textContent = 'Checkout';
+    ctaBtn.textContent = 'Checkout';
+    
+    setTimeout(() => {
+      document.querySelector('.cartBtn').addEventListener('click', (e) => { ctaBtn.click(); });
+    }, 500);
     break;
   
     case '#/checkout':
     html = Handlebars.templates.checkout(shoppingCart);
-    document.querySelector('.ctaBtn').textContent = 'Submit Order';
+    ctaBtn.textContent = 'Submit Order';
+    break;
   
     case '#/thank_you':
-    html = Handlebars.templates.thankYou(thankYouContext);
-    document.querySelector('.ctaBtn').textContent = 'Continue Shopping';
+    html = Handlebars.templates.thankYou({});
+    ctaBtn.textContent = 'Continue Shopping';
+    break;
   
     default:
     html = Handlebars.templates.product(products);

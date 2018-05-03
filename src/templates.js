@@ -27,10 +27,36 @@ templates['cart'] = template({"1":function(container,depth0,helpers,partials,dat
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discount : stack1), depth0))
     + "%</div>\n    <div class=\"discountTotal\">"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discountTotal : stack1), depth0))
-    + "</div>\n    <div class=\"ctaBtn\">Checkout</div>\n  </div>\n</div>";
+    + "</div>\n    <div class=\"cartBtn\">Checkout</div>\n  </div>\n</div>";
 },"useData":true});
-templates['checkout'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "";
+templates['checkout'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "      <div class=\"item\">\n        <div class=\"thumbnail\">\n          <img src=\"images/products/"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + ".jpg\" alt=\"image\">\n        </div>\n        <div class=\"desc\">\n          <div class=\"name\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</div>\n          <div class=\"description\">"
+    + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
+    + "</div>\n        </div>\n        <div class=\"quantity\">"
+    + alias4(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quantity","hash":{},"data":data}) : helper)))
+    + "</div>\n        <div class=\"price\">"
+    + alias4(((helper = (helper = helpers.price || (depth0 != null ? depth0.price : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"price","hash":{},"data":data}) : helper)))
+    + "</div>\n        <div class=\"subtotal\">"
+    + alias4(((helper = (helper = helpers.subtotal || (depth0 != null ? depth0.subtotal : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"subtotal","hash":{},"data":data}) : helper)))
+    + "</div>\n      </div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "<div class='checkout'>\n  <div class='info'>\n    <form action='/thank_you'>\n      <h2>Customer Information</h2>\n      <h3>Name</h3>\n      <div class=\"formRow\">\n        <label for='firstName'></label>\n        <input id='firstName' type='text'>\n        <label for='lastName'></label>\n        <input id='lastName' type='text'>\n      </div>\n      <h3>Address</h3>\n      <div class=\"formRow\">\n        <label for='address'></label>\n        <input id='address' type='text'>\n      </div>\n      <div class=\"formRow\">\n        <label for='city'></label>\n        <input id='city' type='text'>\n        <label for='state'></label>\n        <input id='state' type='text'>\n        <label for='zip'></label>\n        <input id='zip' type='text'>\n      </div>\n      <h2>Payment Information</h2>\n      <div class=\"formRow\">\n        <label for='card'></label>\n        <input id='card' type='text'>\n        <label for='expiration'></label>\n        <input id='expiration' type='text'>\n        <label for='ccv'></label>\n        <input id='ccv' type='text'>\n      </div>\n    </form>\n  </div>\n  <div class='cart'>\n    <div class=\"items\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.items : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    </div>\n\n    <div class=\"summary\">\n      <div class=\"total\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.total : stack1), depth0))
+    + "</div>\n      <div class=\"discount\">Order today and receive a discount of "
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discount : stack1), depth0))
+    + "%</div>\n      <div class=\"discountTotal\">"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discountTotal : stack1), depth0))
+    + "</div>\n      <div class=\"ctaBtn\">Checkout</div>\n    </div>\n  </div>\n</div>";
 },"useData":true});
 templates['product'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
