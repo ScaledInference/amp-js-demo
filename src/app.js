@@ -60,13 +60,18 @@ function handleNavigation() {
     ctaBtn.textContent = 'Checkout';
 
     setTimeout(() => {
-      document.querySelector('.cartBtn').addEventListener('click', (e) => { ctaBtn.click(); });
+      const cartBtn = document.querySelector('.cartBtn');
+      cartBtn.addEventListener('click', (e) => { ctaBtn.click(); });
+      cartBtn.style.backgroundColor = decision.ctaColor;
     }, 500);
     break;
   
     case '#/checkout':
     html = Handlebars.templates.checkout(shoppingCart);
     ctaBtn.textContent = 'Submit Order';
+
+    const checkoutBtn = document.querySelector('.checkoutBtn');
+    checkoutBtn.style.backgroundColor = decision.ctaColor;
     break;
   
     case '#/thank_you':
