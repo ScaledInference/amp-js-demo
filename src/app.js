@@ -1,6 +1,6 @@
 const products = { categories };
 
-const cart = {
+let cart = {
   items: [],
   total: 0,
   discount: 0,
@@ -25,6 +25,13 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
       case 'Continue Shopping':
       location.hash = '';
+      cart = {
+        items: [],
+        total: 0,
+        discount: 0,
+        discountTotal: 0
+      };
+      
       break;
 
       default:
