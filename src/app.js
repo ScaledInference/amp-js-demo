@@ -51,7 +51,7 @@ function handleNavigation() {
     case '#/cart':
     html = Handlebars.templates.cart(shoppingCart);
     ctaBtn.textContent = 'Checkout';
-    
+
     setTimeout(() => {
       document.querySelector('.cartBtn').addEventListener('click', (e) => { ctaBtn.click(); });
     }, 500);
@@ -129,6 +129,7 @@ function addEventsForProductPage() {
         cart.discount = discount;
         cart.discountTotal = parseFloat(total - total * (discount / 100), 10).toFixed(2);
 
+        localStorage.setItem('cart', JSON.stringify(cart));
         document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
       });
     });

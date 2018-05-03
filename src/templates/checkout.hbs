@@ -4,36 +4,29 @@
       <h2>Customer Information</h2>
       <h3>Name</h3>
       <div class="formRow">
-        <label for='firstName'></label>
-        <input id='firstName' type='text'>
-        <label for='lastName'></label>
-        <input id='lastName' type='text'>
+        <input id='firstName' type='text' placeholder="First">
+        <input id='lastName' type='text' placeholder="Last">
       </div>
       <h3>Address</h3>
       <div class="formRow">
-        <label for='address'></label>
-        <input id='address' type='text'>
+        <input id='address' type='text' placeholder="Address">
       </div>
       <div class="formRow">
-        <label for='city'></label>
-        <input id='city' type='text'>
-        <label for='state'></label>
-        <input id='state' type='text'>
-        <label for='zip'></label>
-        <input id='zip' type='text'>
+        <input id='city' type='text' placeholder="City">
+        <input id='state' type='text' placeholder="State">
+        <input id='zip' type='text' placeholder="Zip">
       </div>
       <h2>Payment Information</h2>
       <div class="formRow">
-        <label for='card'></label>
-        <input id='card' type='text'>
-        <label for='expiration'></label>
-        <input id='expiration' type='text'>
-        <label for='ccv'></label>
-        <input id='ccv' type='text'>
+        <input id='card' type='text' placeholder="Card number">
+        <input id='expiration' type='date' placeholder="Expiration">
+        <input id='ccv' type='text' placeholder="CCV">
       </div>
+      <input class="checkoutBtn" type="submit" value="Submit Order">
     </form>
   </div>
   <div class='cart'>
+    <h2>Order Summary</h2>
     <div class="items">
       {{#each cart.items}}
       <div class="item">
@@ -42,10 +35,8 @@
         </div>
         <div class="desc">
           <div class="name">{{name}}</div>
-          <div class="description">{{description}}</div>
         </div>
         <div class="quantity">{{quantity}}</div>
-        <div class="price">{{price}}</div>
         <div class="subtotal">{{subtotal}}</div>
       </div>
       {{/each}}
@@ -53,9 +44,9 @@
 
     <div class="summary">
       <div class="total">{{cart.total}}</div>
-      <div class="discount">Order today and receive a discount of {{cart.discount}}%</div>
+      <div class="discount">Discount of {{cart.discount}}%</div>
+      <div class="shipping">Free Shipping</div>
       <div class="discountTotal">{{cart.discountTotal}}</div>
-      <div class="ctaBtn">Checkout</div>
     </div>
   </div>
 </div>
