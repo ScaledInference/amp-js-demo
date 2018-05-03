@@ -17,7 +17,7 @@ var categories = [
     {
     "name": "Google - Chromecast Ultra - Black",
     "id": "5578628",
-    "description": "Introducing Chromecast Ultra Delivers everything you love about Chromecast plus faster processing speeds and up to 4K Ultra HD & HDR picture quality*. Chromecast Ultra works with iPhone&#174;, iPad&#174;, Android devices, Mac&#174;, Windows&#174;, and Chromebooks.",
+    "description": "Introducing Chromecast Ultra Delivers everything you love about Chromecast plus faster processing speeds and up to 4K Ultra HD & HDR picture quality*. Chromecast Ultra works with iPhone, iPad, Android devices, Mac, Windows, and Chromebooks.",
     "price": 69.99
     },
     {

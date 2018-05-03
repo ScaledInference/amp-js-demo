@@ -1,11 +1,15 @@
-const products = {
-  categories: categories
-};
+const products = { categories };
 
-const cart = [];
+const cart = {
+  items: [],
+  total: 0,
+  discount: 0,
+  discountTotal: 0
+};
+const shoppingCart = { cart };
 
 window.addEventListener('DOMContentLoaded', (e) => {
-  addEventsForProductPage();
+  handleNavigation();
 
   document.querySelector('.ctaBtn').addEventListener('click', (e) => {
     const label = e.target.textContent;
@@ -40,16 +44,16 @@ function handleNavigation() {
   switch (location.hash) {
     case '/', '':
     html = addEventsForProductPage();
-    document.querySelector('.ctaBtn').textContent = `Cart - ${cart.length} Items`;
+    document.querySelector('.ctaBtn').textContent = `Cart - ${cart.items.length} Items`;
     break;
 
     case '#/cart':
-    html = Handlebars.templates.cart(cart);
+    html = Handlebars.templates.cart(shoppingCart);
     document.querySelector('.ctaBtn').textContent = 'Checkout';
     break;
   
     case '#/checkout':
-    html = Handlebars.templates.checkout(checkoutContext);
+    html = Handlebars.templates.checkout(shoppingCart);
     document.querySelector('.ctaBtn').textContent = 'Submit Order';
   
     case '#/thank_you':
@@ -82,14 +86,43 @@ function addEventsForProductPage() {
     document.querySelectorAll('.addToCart').forEach(element => {
       element.addEventListener('click', (e) => {
         const target = e.target;
-        cart.push({
-          id: target.dataset.id,
-          name: target.dataset.name,
-          description: target.dataset.description,
-          price: target.dataset.price
-        });
 
-        document.querySelector('.ctaBtn').textContent = `Cart - ${cart.length} Items`;
+        let existingItem = false;
+        let cartSize = 0;
+        let total = 0;
+        let discount = 5;
+        
+        cart.items.forEach(item => {
+          if (item.id === target.dataset.id) {
+            item.quantity = parseInt(item.quantity, 10) + 1;
+            item.subtotal = parseFloat(item.quantity, 10) * parseFloat(item.price, 10);
+            existingItem = true;
+          }
+          
+          cartSize += parseInt(item.quantity, 10);
+          total += parseFloat(item.quantity, 10) * parseFloat(item.price, 10);
+        });
+        
+        
+        if (!existingItem) {
+          cart.items.push({
+            id: target.dataset.id,
+            name: target.dataset.name,
+            description: target.dataset.description,
+            price: target.dataset.price,
+            quantity: 1,
+            subtotal: 1 * parseFloat(target.dataset.price, 10)
+          });
+          
+          cartSize += 1;
+          total += 1 * parseFloat(target.dataset.price, 10);
+        } 
+
+        cart.total = parseFloat(total, 10).toFixed(2);
+        cart.discount = discount;
+        cart.discountTotal = parseFloat(total - total * (discount / 100), 10).toFixed(2);
+
+        document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
       });
     });
   }, 500);

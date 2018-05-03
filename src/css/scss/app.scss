@@ -9,7 +9,7 @@
 
   .icon{
     float: left;
-    width: 10%;
+    width: 5%;
     margin: 10px;
 
     img{
@@ -135,6 +135,126 @@
               cursor: pointer;
             }
           }
+        }
+      }
+    }
+  }
+  .cart{
+    h1{
+      margin: 40px 0 80px;
+    }
+    .header{
+      height: 20px;
+
+      .thumbnail, .desc, .quantity, .price, .subtotal{
+        float: left;
+        font-weight: bold;
+      }
+      .thumbnail{
+        width: 10%;
+        text-align: center;
+      }
+      .desc{
+        width: 50%;
+        padding-left: 76px;
+        text-align: left;
+      }
+      .quantity, .price{
+        width: 10%;
+        text-align: center;
+      }
+      .subtotal{
+        float: right;
+        width: 10%;
+        text-align: center;
+      }
+    }
+    .items{
+      border-bottom: 0.5px solid #ccc;
+
+      .item{
+        height: 100px;
+        margin: 40px 0;
+
+        .thumbnail{
+          float: left;
+          width: 10%;
+          text-align: center;
+
+          img{
+            height: 76px;
+          }
+        }
+        .desc{
+          float: left;
+          width: 50%;
+          padding-left: 76px;
+
+          .name{
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .description{
+            margin-top: 10px;
+            font-size: 13px;
+          }
+        }
+        .quantity{
+          float: left;
+          width: 10%;
+          text-align: center;
+        }
+        .price{
+          float: left;
+          width: 10%;
+          text-align: center;
+          
+          &:before{
+            content: "$"
+          }
+        }
+        .subtotal{
+          float: right;
+          width: 10%;
+          font-weight: bold;
+          text-align: center;
+          
+          &:before{
+            content: "$"
+          }
+        }
+      }
+    }
+    .summary{
+      margin-top: 30px;
+      text-align: right;
+
+      .total, .discountTotal{
+        font-weight: bold;
+
+        &:before{
+          content: "$"
+        }
+      }
+      .discount{
+        margin-top: 10px;
+        padding-bottom: 5px;
+        font-size: 13px;
+      }
+      .discountTotal{
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .ctaBtn{
+        margin-top: 30px;
+        background: rgb(45, 149, 250);
+        color: white;
+        text-align: center;
+        line-height: 44px;
+        cursor: pointer;
+  
+        &:hover{
+          background:rgb(22, 112, 250);
         }
       }
     }
