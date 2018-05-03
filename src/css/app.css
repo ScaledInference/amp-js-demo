@@ -32,6 +32,7 @@
 .cart .items .item {
   height: 100px;
   margin: 40px 0;
+  overflow: hidden;
 }
 .cart .items .item .thumbnail {
   float: left;
@@ -209,7 +210,7 @@
 .checkout .cart {
   float: left;
   width: 50%;
-  padding: 20px;
+  padding: 0 20px;
 }
 .checkout .checkoutBtn {
   height: 44px;
@@ -227,6 +228,75 @@
 }
 .checkout .shipping {
   font-size: 13px;
+}
+
+.thankYou .check {
+  text-align: center;
+}
+.thankYou .check .emoji {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  margin: 12px;
+  line-height: 200px;
+  background: #9ce17b;
+  border-radius: 100px;
+  text-align: center;
+  font-size: 150px;
+  color: white;
+}
+.thankYou .check .thanks {
+  font-size: 50px;
+}
+.thankYou .order {
+  height: 50vh;
+  margin-top: 20px;
+}
+.thankYou .order .items {
+  height: 270px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.thankYou .order .items .item {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 450px;
+  margin: 20px;
+}
+.thankYou .order .items .item .thumbnail {
+  height: 100px;
+  position: relative;
+}
+.thankYou .order .items .item .thumbnail img {
+  position: absolute;
+  width: 50%;
+  padding-bottom: 20px;
+  bottom: 0;
+}
+.thankYou .order .items .item .name {
+  height: 70px;
+  font-size: 13px;
+  font-weight: bold;
+  word-wrap: break-word;
+  white-space: pre-line;
+}
+.thankYou .order .items .item .desc {
+  height: 44px;
+  font-size: 12px;
+  white-space: normal;
+  overflow-y: hidden;
+}
+.thankYou .order .items .item .subtotal {
+  padding-top: 20px;
+}
+.thankYou .order .items .item .subtotal:before {
+  content: "$";
+}
+.thankYou .order .summary .total {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 * {

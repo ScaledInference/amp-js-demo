@@ -63,7 +63,7 @@ function handleNavigation() {
     break;
   
     case '#/thank_you':
-    html = Handlebars.templates.thankYou({});
+    html = Handlebars.templates.thankYou(shoppingCart);
     ctaBtn.textContent = 'Continue Shopping';
     break;
   
@@ -102,7 +102,7 @@ function addEventsForProductPage() {
         cart.items.forEach(item => {
           if (item.id === target.dataset.id) {
             item.quantity = parseInt(item.quantity, 10) + 1;
-            item.subtotal = parseFloat(item.quantity, 10) * parseFloat(item.price, 10);
+            item.subtotal = parseFloat(item.quantity, 10) * parseFloat(item.price, 10).toFixed(2);
             existingItem = true;
           }
           

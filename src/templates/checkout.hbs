@@ -1,6 +1,6 @@
 <div class='checkout'>
   <div class='info'>
-    <form action='/thank_you'>
+    <form action='#'>
       <h2>Customer Information</h2>
       <h3>Name</h3>
       <div class="formRow">
@@ -22,7 +22,7 @@
         <input id='expiration' type='date' placeholder="Expiration">
         <input id='ccv' type='text' placeholder="CCV">
       </div>
-      <input class="checkoutBtn" type="submit" value="Submit Order">
+      <div class="checkoutBtn" onclick="location.hash = '/thank_you'">Submit Order</div>
     </form>
   </div>
   <div class='cart'>
