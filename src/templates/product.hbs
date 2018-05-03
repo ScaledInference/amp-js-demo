@@ -1,3 +1,22 @@
-<div>
-  Product
+<div class='store'>
+  {{#each categories}}
+    <div class="category">
+      <div class="title">{{title}}</div>
+      <div class="products">
+      {{#each products}}
+        <div class="product">
+          <div class="thumbnail">
+            <img src="images/products/{{id}}.jpg" alt="image">
+          </div>
+          <div class="name">{{name}}</div>
+          <div class="description">{{description}}</div>
+          <div class="price">{{price}}</div>
+          <div class="overlay hide">
+            <div class="addToCart">Add To Cart</div>
+          </div>
+        </div>
+      {{/each}}
+      </div>
+    </div>
+  {{/each}}
 </div>

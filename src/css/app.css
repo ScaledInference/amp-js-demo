@@ -21,7 +21,7 @@
 .nav .title {
   float: left;
   height: inherit;
-  width: 60%;
+  width: 50%;
   line-height: 64px;
   font-size: 24px;
   color: white;
@@ -46,6 +46,84 @@
 
 .main {
   padding: 20px;
+}
+.main .store .category {
+  height: 500px;
+  margin: 0 0 80px;
+}
+.main .store .category .title {
+  font-weight: bold;
+}
+.main .store .category .products {
+  height: 480px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.main .store .category .products .product {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 450px;
+  margin: 20px;
+}
+.main .store .category .products .product .thumbnail {
+  height: 160px;
+  position: relative;
+}
+.main .store .category .products .product .thumbnail img {
+  position: absolute;
+  width: 50%;
+  padding-bottom: 20px;
+  bottom: 0;
+}
+.main .store .category .products .product .name {
+  height: 70px;
+  font-size: 13px;
+  font-weight: bold;
+  word-wrap: break-word;
+  white-space: pre-line;
+}
+.main .store .category .products .product .description {
+  height: 156px;
+  font-size: 12px;
+  white-space: normal;
+  overflow-y: hidden;
+}
+.main .store .category .products .product .price {
+  padding-top: 20px;
+}
+.main .store .category .products .product .price:before {
+  content: "$";
+}
+.main .store .category .products .product .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.5 ease-in-out;
+  text-align: center;
+}
+.main .store .category .products .product .overlay.show {
+  visibility: visible;
+}
+.main .store .category .products .product .overlay.hide {
+  visibility: hidden;
+}
+.main .store .category .products .product .overlay .addToCart {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  margin-top: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  color: white;
+  line-height: 30px;
+  background: #1670fa;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=src/css/app.css.map */

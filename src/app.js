@@ -1,5 +1,5 @@
 const productContext = {
-  
+  categories: categories
 };
 
 const cartContext = {
@@ -7,7 +7,16 @@ const cartContext = {
 };
 
 window.addEventListener('DOMContentLoaded', (e) => {
-  document.querySelector('.main').innerHTML = Handlebars.templates.product(productContext);;
+  document.querySelector('.main').innerHTML = Handlebars.templates.product(productContext);
+
+  document.querySelectorAll('.product').forEach(element => { 
+    element.addEventListener('mouseover', (e) => {
+      element.querySelector('.overlay').className = 'overlay show';
+    });
+    element.addEventListener('mouseout', (e) => {
+      element.querySelector('.overlay').className = 'overlay hide';
+    });
+  });
 });
 
 window.addEventListener('popstate', (e) => {
