@@ -46,6 +46,7 @@ window.addEventListener('hashchange', (e) => {
 function handleNavigation() {
   let html;
   const ctaBtn = document.querySelector('.ctaBtn');
+  const main = document.querySelector('.main');
 
   switch (location.hash) {
     case '/', '':
@@ -53,36 +54,30 @@ function handleNavigation() {
     break;
 
     case '#/cart':
-    html = Handlebars.templates.cart(shoppingCart);
     ctaBtn.textContent = 'Checkout';
 
-    setTimeout(() => {
-      const cartBtn = document.querySelector('.cartBtn');
-      cartBtn.addEventListener('click', (e) => { ctaBtn.click(); });
-      cartBtn.style.backgroundColor = decision.ctaColor;
-    }, 500);
+    main.innerHTML = Handlebars.templates.cart(shoppingCart);
+
+    const cartBtn = document.querySelector('.cartBtn');
+    cartBtn.style.backgroundColor = decision.ctaColor;
+    cartBtn.addEventListener('click', (e) => { ctaBtn.click(); });
     break;
-  
+    
     case '#/checkout':
-    html = Handlebars.templates.checkout(shoppingCart);
     ctaBtn.textContent = 'Submit Order';
 
-    setTimeout(() => {
-      const checkoutBtn = document.querySelector('.checkoutBtn');
-      checkoutBtn.style.backgroundColor = decision.ctaColor;
-    }, 500);
+    main.innerHTML = Handlebars.templates.checkout(shoppingCart);
+    document.querySelector('.checkoutBtn').style.backgroundColor = decision.ctaColor;
     break;
-  
+    
     case '#/thank_you':
-    html = Handlebars.templates.thankYou(shoppingCart);
+    main.innerHTML = Handlebars.templates.thankYou(shoppingCart);
     ctaBtn.textContent = 'Continue Shopping';
     break;
-  
+    
     default:
-    html = Handlebars.templates.product(products);
+    main.innerHTML = Handlebars.templates.product(products);
   }
-  
-  document.querySelector('.main').innerHTML = html;
 }
 
 function setupProductPage() {
