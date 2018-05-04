@@ -73,6 +73,8 @@ function handleNavigation() {
     case '#/thank_you':
     main.innerHTML = Handlebars.templates.thankYou(shoppingCart);
     ctaBtn.textContent = 'Continue Shopping';
+
+    amp.observe('Sale', { amount: cart.discountTotal });
     break;
     
     default:

@@ -23,10 +23,10 @@
         'Turkey': ['Adana', 'Ankara', 'Balıkesir', 'Bursa', 'Edirne', 'Istanbul', 'Ordu', 'Batman']
       };
 
-      const loc = {
-        country: countries[Math.round(Math.random(countries.length - 1))],
-        region: regions[Math.round(Math.random(regions.length - 1))]
-      };
+      const country = countries[Math.round(Math.random(countries.length - 1))];
+      const region = regions[country][Math.round(Math.random(regions.length - 1))];
+
+      const loc = { country, region};
       const newCustomer = Math.round(Math.random()) === 0 ? false : true;
 
       // Observe context
