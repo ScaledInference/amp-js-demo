@@ -31,7 +31,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
         items: [],
         total: 0
       };
-
       break;
 
       default:
@@ -41,7 +40,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
 });
 
 window.addEventListener('hashchange', (e) => {
-  console.log('hashchange');
   handleNavigation();
 });
 
@@ -51,8 +49,7 @@ function handleNavigation() {
 
   switch (location.hash) {
     case '/', '':
-    html = addEventsForProductPage();
-    ctaBtn.textContent = `Cart - ${cart.items.length} Items`;
+    html = setupProductPage();
     break;
 
     case '#/cart':
@@ -88,7 +85,7 @@ function handleNavigation() {
   document.querySelector('.main').innerHTML = html;
 }
 
-function addEventsForProductPage() {
+function setupProductPage() {
   const html = Handlebars.templates.product(products);
   document.querySelector('.main').innerHTML = html;
 
@@ -155,5 +152,11 @@ function addEventsForProductPage() {
     });
   }, 500);
 
+  let numItems = 0;
+  cart.items.forEach(item => {
+    numItems += parseInt(item.quantity, 10);
+  });
+
+  document.querySelector('.ctaBtn').textContent = `Cart - ${numItems} Items`;
   return html;
 }
