@@ -46,14 +46,15 @@ window.addEventListener('hashchange', (e) => {
 function handleNavigation() {
   let html;
   const ctaBtn = document.querySelector('.ctaBtn');
+  const main = document.querySelector('.main');
 
   switch (location.hash) {
     case '/', '':
-    html = setupProductPage();
+    main.innerHTML = setupProductPage();
     break;
 
     case '#/cart':
-    html = Handlebars.templates.cart(shoppingCart);
+    main.innerHTML = Handlebars.templates.cart(shoppingCart);
     ctaBtn.textContent = 'Checkout';
 
     setTimeout(() => {
@@ -62,20 +63,18 @@ function handleNavigation() {
     break;
   
     case '#/checkout':
-    html = Handlebars.templates.checkout(shoppingCart);
+    main.innerHTML = Handlebars.templates.checkout(shoppingCart);
     ctaBtn.textContent = 'Submit Order';
     break;
   
     case '#/thank_you':
-    html = Handlebars.templates.thankYou(shoppingCart);
+    main.innerHTML = Handlebars.templates.thankYou(shoppingCart);
     ctaBtn.textContent = 'Continue Shopping';
     break;
   
     default:
-    html = Handlebars.templates.product(products);
+    main.innerHTML = Handlebars.templates.product(products);
   }
-  
-  document.querySelector('.main').innerHTML = html;
 }
 
 function setupProductPage() {
