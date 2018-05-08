@@ -11,8 +11,8 @@ function geoLocation() {
     'Turkey': ['Adana', 'Ankara', 'Balıkesir', 'Bursa', 'Edirne', 'Istanbul', 'Ordu', 'Batman']
   };
 
-  const country = countries[Math.round(Math.random(countries.length - 1))];
-  const region = regions[country][Math.round(Math.random(regions.length - 1))];
+  const country = countries[Math.floor(Math.random() * countries.length)];
+  const region = regions[country][Math.floor(Math.random() * regions.length)];
 
   return { country, region};
 }
