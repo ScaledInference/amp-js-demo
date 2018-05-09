@@ -9,12 +9,11 @@
   margin: 0;
 }
 .nav{
+  display: flex;
   height: 64px;
   background: #444;
 
   .icon{
-    float: left;
-    width: 5%;
     margin: 10px;
 
     img{
@@ -25,9 +24,8 @@
   }
 
   .title{
-    float: left;
+    flex: 2;
     height: inherit;
-    width: 50%;
     line-height: 64px;
     font-size: 24px;
     color: white;
@@ -36,7 +34,6 @@
   .actions{
     width: 20%;
     max-height: 44px;
-    float: right;
     margin: 10px;
     overflow: hidden;
 

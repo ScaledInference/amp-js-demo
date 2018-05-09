@@ -8,15 +8,15 @@
     }
 
     .products{
+      display: flex;
       height: 480px;
       overflow-x: scroll;
       overflow-y: hidden;
       white-space: nowrap;
 
       .product{
-        display: inline-block;
         position: relative;
-        width: 150px;
+        flex: 1 0 150px;
         height: 450px;
         margin: 20px;
 
