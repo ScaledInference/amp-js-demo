@@ -4,8 +4,9 @@
   "description": "JS Shopping Cart Demo",
   "main": "index.html",
   "scripts": {
-    "build": "npm run sass; npm run handlebars",
-    "sass": "sass src/css/scss/app.scss src/css/app.css",
+    "build": "npm run app_sass; npm run demo_sass; npm run handlebars",
+    "app_sass": "sass src/css/scss/app.scss src/css/app.css",
+    "demo_sass": "sass src/css/scss/demo.scss src/css/demo.css",
     "handlebars": "handlebars src/templates -f src/templates.js -e hbs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

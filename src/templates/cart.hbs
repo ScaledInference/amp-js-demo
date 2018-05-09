@@ -1,33 +1,35 @@
 <div class='cart'>
   <h1>Shopping Cart</h1>
-  <div class="header">
-    <div class="thumbnail">Product</div>
-    <div class="desc">Description</div>
-    <div class="quantity">Quantity</div>
-    <div class="price">Price</div>
-    <div class="subtotal">Subtotal</div>
+  <div class='header'>
+    <div class='thumbnail'>Product</div>
+    <div class='desc'>Description</div>
+    <div class='quantity'>Quantity</div>
+    <div class='price'>Price</div>
+    <div class='subtotal'>Subtotal</div>
   </div>
-  <div class="items">
+  <div class='items'>
     {{#each cart.items}}
-    <div class="item">
-      <div class="thumbnail">
-        <img src="images/products/{{id}}.jpg" alt="image">
+    <div class='item'>
+      <div class='thumbnail'>
+        <img src='images/products/{{id}}.jpg' alt='image'>
       </div>
-      <div class="desc">
-        <div class="name">{{name}}</div>
-        <div class="description">{{description}}</div>
+      <div class='desc'>
+        <div class='name'>{{name}}</div>
+        <div class='description'>{{description}}</div>
       </div>
-      <div class="quantity">{{quantity}}</div>
-      <div class="price">{{price}}</div>
-      <div class="subtotal">{{subtotal}}</div>
+      <div class='quantity'>{{quantity}}</div>
+      <div class='price'>{{price}}</div>
+      <div class='subtotal'>{{subtotal}}</div>
     </div>
     {{/each}}
   </div>
 
-  <div class="summary">
-    <div class="total">{{cart.total}}</div>
-    <div class="discount">Order today and receive a discount of {{cart.discount}}%</div>
-    <div class="discountTotal">{{cart.discountTotal}}</div>
-    <div class="cartBtn">Checkout</div>
+  <div class='summary'>
+    <div class='total'>{{cart.total}}</div>
+    {{#if cart.discount}}
+    <div class='discount'>Order today and receive a discount of {{cart.discount}}%</div>
+    <div class='discountTotal'>{{cart.discountTotal}}</div>
+    {{/if}}
+    <div class='cartBtn'>Checkout</div>
   </div>
 </div>
