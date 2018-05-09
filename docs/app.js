@@ -50,7 +50,7 @@ function handleNavigation() {
 
   switch (location.hash) {
     case '/', '':
-    html = setupProductPage();
+    main.innerHTML = setupProductPage();
     break;
 
     case '#/cart':
