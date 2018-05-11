@@ -11,7 +11,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
   // use Amp decision to take action on button color
   const ctaBtn = document.querySelector('.ctaBtn');
-  ctaBtn.style.backgroundColor = decision.ctaColor;
 
   ctaBtn.addEventListener('click', (e) => {
     const label = e.target.textContent;
@@ -59,7 +58,6 @@ function handleNavigation() {
     main.innerHTML = Handlebars.templates.cart(shoppingCart);
 
     const cartBtn = document.querySelector('.cartBtn');
-    cartBtn.style.backgroundColor = decision.ctaColor;
     cartBtn.addEventListener('click', (e) => { ctaBtn.click(); });
     break;
     
@@ -67,14 +65,11 @@ function handleNavigation() {
     ctaBtn.textContent = 'Submit Order';
 
     main.innerHTML = Handlebars.templates.checkout(shoppingCart);
-    document.querySelector('.checkoutBtn').style.backgroundColor = decision.ctaColor;
     break;
     
     case '#/thank_you':
     main.innerHTML = Handlebars.templates.thankYou(shoppingCart);
     ctaBtn.textContent = 'Continue Shopping';
-
-    amp.observe('Sale', { amount: cart.discountTotal });
     break;
     
     default:
@@ -107,7 +102,7 @@ function setupProductPage() {
         let total = 0;
 
         // take action on discount from Amp decision
-        let discount = decision.discount ? 5 : 0;
+        let discount = 0;
         
         cart.items.forEach(item => {
           if (item.id === target.dataset.id) {
@@ -136,13 +131,8 @@ function setupProductPage() {
         } 
 
         cart.total = parseFloat(total, 10).toFixed(2);
-        if (discount !== 0) {
-          cart.discount = discount;
-          cart.discountTotal = parseFloat(total - total * (discount / 100), 10).toFixed(2);
-        }
-
-        // use Amp decision for free shipping
-        cart.shipping = decision.freeShipping;
+        cart.discount = discount;
+        cart.discountTotal = parseFloat(total - total * (discount / 100), 10).toFixed(2);
 
         document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
       });

@@ -122,14 +122,12 @@ templates['thankYou'] = template({"1":function(container,depth0,helpers,partials
     + alias4(((helper = (helper = helpers.subtotal || (depth0 != null ? depth0.subtotal : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"subtotal","hash":{},"data":data}) : helper)))
     + "</div>\n      </div>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+    var stack1;
 
   return "<div class=\"thankYou\">\n  <div class=\"check\">\n    <div class=\"emoji\">\n      ✓\n    </div>\n    <div class=\"thanks\">Thank you!</div>\n  </div>\n  <div class='order'>\n    <h2>Order Summary</h2>\n    <div class=\"items\">\n"
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.items : stack1),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "    </div>\n\n    <div class=\"summary\">\n      <div class=\"total\">Total: $"
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discountTotal : stack1), depth0))
-    + "</div>\n    </div>\n  </div>\n  <script>\n    amp.observe('Sale', { amount: "
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discountTotal : stack1), depth0))
-    + " });\n  </script>\n</div>";
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.cart : depth0)) != null ? stack1.discountTotal : stack1), depth0))
+    + "</div>\n    </div>\n  </div>\n</div>";
 },"useData":true});
 })();

@@ -4,7 +4,7 @@
   "description": "JS Shopping Cart Demo",
   "main": "index.html",
   "scripts": {
-    "build": "npm run app_sass; npm run demo_sass; npm run handlebars",
+    "build": "npm run app_sass; npm run handlebars",
     "app_sass": "sass src/css/scss/app.scss src/css/app.css",
     "handlebars": "handlebars src/templates -f src/templates.js -e hbs",
     "start": "http-server ./src",
