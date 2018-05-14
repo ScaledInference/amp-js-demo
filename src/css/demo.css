@@ -1,3 +1,26 @@
-
+.demo .context {
+  display: flex;
+}
+.demo .context .title {
+  flex: 0 1 1%;
+  background: tan;
+}
+.demo .context .content {
+  flex: 0 1 99%;
+}
+.demo .actions .title {
+  flex: 0 1 1%;
+  background: orange;
+}
+.demo .actions .content {
+  flex: 0 1 99%;
+}
+.demo .outcome .title {
+  flex: 0 1 1%;
+  background: #38a070;
+}
+.demo .outcome .content {
+  flex: 0 1 99%;
+}
 
 /*# sourceMappingURL=src/css/demo.css.map */

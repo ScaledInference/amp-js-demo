@@ -1,0 +1,31 @@
+.demo{
+  .context{
+    display: flex;
+
+    .title{
+      flex: 0 1 1%;
+      background: tan;
+    }
+    .content{
+      flex: 0 1 99%;
+    }
+  }
+  .actions{
+    .title{
+      flex: 0 1 1%;
+      background: orange;
+    }
+    .content{
+      flex: 0 1 99%;
+    }
+  }
+  .outcome{
+    .title{
+      flex: 0 1 1%;
+      background: rgb(56,160,112);
+    }
+    .content{
+      flex: 0 1 99%;
+    }
+  }
+}
