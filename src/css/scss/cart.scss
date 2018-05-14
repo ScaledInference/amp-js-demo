@@ -3,28 +3,28 @@
     margin: 40px 0 80px;
   }
   .header{
+    display: flex;
+    justify-content: space-around;
     height: 20px;
 
     .thumbnail, .desc, .quantity, .price, .subtotal{
-      float: left;
       font-weight: bold;
     }
     .thumbnail{
-      width: 10%;
+      flex: 1 1 10%;
       text-align: center;
     }
     .desc{
-      width: 50%;
+      flex: 0 1 40%;
       padding-left: 76px;
       text-align: left;
     }
-    .quantity, .price{
-      width: 10%;
+    .quantity{
+      flex: 0 1 10%;
       text-align: center;
     }
-    .subtotal{
-      float: right;
-      width: 10%;
+    .price, .subtotal{
+      flex: 0 1 20%;
       text-align: center;
     }
   }
@@ -32,13 +32,14 @@
     border-bottom: 0.5px solid #ccc;
 
     .item{
+      display: flex;
+      justify-content: space-around;
       height: 100px;
       margin: 40px 0;
       overflow: hidden;
 
       .thumbnail{
-        float: left;
-        width: 10%;
+        flex: 1 1 10%;
         text-align: center;
 
         img{
@@ -46,9 +47,7 @@
         }
       }
       .desc{
-        float: left;
-        width: 50%;
-        padding-left: 76px;
+        flex: 0 1 40%;
 
         .name{
           font-size: 14px;
@@ -60,13 +59,11 @@
         }
       }
       .quantity{
-        float: left;
-        width: 10%;
+        flex: 0 1 10%;
         text-align: center;
       }
       .price{
-        float: left;
-        width: 10%;
+        flex: 20%;
         text-align: center;
         
         &:before{
@@ -74,8 +71,7 @@
         }
       }
       .subtotal{
-        float: right;
-        width: 10%;
+        flex: 0 1 20%;
         font-weight: bold;
         text-align: center;
         
@@ -87,6 +83,7 @@
   }
   .summary{
     margin-top: 30px;
+    padding: 0 7%;
     text-align: right;
 
     .total, .discountTotal{
