@@ -88,7 +88,6 @@ function setupProductPage() {
 
   setTimeout(() => {
     document.querySelectorAll('.product').forEach(element => { 
-      console.log('add product events');
       element.addEventListener('mouseover', (e) => {
         element.querySelector('.overlay').className = 'overlay show';
       });
