@@ -1,31 +1,99 @@
+*{
+  box-sizing: border-box;
+}
 .demo{
+  width: 500px;
+  font-family: sans-serif;
+
+  .title{
+    flex: 0.1;
+    height:200px;
+    width:26px;
+    background: tan;
+    border-right: 0.5px solid #333;
+
+    div{
+      transform: translateY(100px) rotateZ(-90deg);
+    }
+  }
+
+  .content{
+    display: flex;
+    flex: 0.9;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
   .context{
     display: flex;
+    margin-bottom: 10px;
+    border: 0.5px solid #333;
 
-    .title{
-      flex: 0 1 1%;
-      background: tan;
-    }
     .content{
-      flex: 0 1 99%;
+      .connection, .timeOfDay, .location, .customer{
+        flex: 0 1 50%;
+        text-align: center;
+
+        .icon{
+          height: 60px;
+          font-size: 48px;
+        }
+      }
     }
   }
   .actions{
+    display: flex;
+    margin-bottom: 10px;
+    border: 0.5px solid #333;
+
+    div{
+      transform: translateY(150px) rotateZ(-90deg);
+    }
+
     .title{
-      flex: 0 1 1%;
       background: orange;
     }
     .content{
-      flex: 0 1 99%;
+      display: block;
+
+      .product, .cart, .checkout{
+        .label{
+          padding:15px;
+        }
+        .variants{
+          display: flex;
+          justify-content: space-around;
+
+          .icon{
+            flex: 1;
+            text-align: center;
+          }
+          .variant{
+            flex: 2;
+            text-align: center;
+          }
+        }
+      }
+      .chevron{
+        width: 150px;
+        height:20px;
+        margin: 0 auto;
+        border-top: 20px solid #aaa;
+        border-left: 75px solid white;
+        border-right: 75px solid white;
+        border-bottom: 0;
+      }
     }
   }
   .outcome{
+    display: flex;
+    border: 0.5px solid #333;
+
     .title{
-      flex: 0 1 1%;
       background: rgb(56,160,112);
     }
     .content{
-      flex: 0 1 99%;
+
     }
   }
 }

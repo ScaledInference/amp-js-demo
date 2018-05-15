@@ -1,26 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+.demo {
+  width: 500px;
+  font-family: sans-serif;
+}
+.demo .title {
+  flex: 0.1;
+  height: 200px;
+  width: 26px;
+  background: tan;
+  border-right: 0.5px solid #333;
+}
+.demo .title div {
+  transform: translateY(100px) rotateZ(-90deg);
+}
+.demo .content {
+  display: flex;
+  flex: 0.9;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .demo .context {
   display: flex;
+  margin-bottom: 10px;
+  border: 0.5px solid #333;
 }
-.demo .context .title {
-  flex: 0 1 1%;
-  background: tan;
+.demo .context .content .connection, .demo .context .content .timeOfDay, .demo .context .content .location, .demo .context .content .customer {
+  flex: 0 1 50%;
+  text-align: center;
 }
-.demo .context .content {
-  flex: 0 1 99%;
+.demo .context .content .connection .icon, .demo .context .content .timeOfDay .icon, .demo .context .content .location .icon, .demo .context .content .customer .icon {
+  height: 60px;
+  font-size: 48px;
+}
+.demo .actions {
+  display: flex;
+  margin-bottom: 10px;
+  border: 0.5px solid #333;
+}
+.demo .actions div {
+  transform: translateY(150px) rotateZ(-90deg);
 }
 .demo .actions .title {
-  flex: 0 1 1%;
   background: orange;
 }
 .demo .actions .content {
-  flex: 0 1 99%;
+  display: block;
+}
+.demo .actions .content .product .label, .demo .actions .content .cart .label, .demo .actions .content .checkout .label {
+  padding: 15px;
+}
+.demo .actions .content .product .variants, .demo .actions .content .cart .variants, .demo .actions .content .checkout .variants {
+  display: flex;
+  justify-content: space-around;
+}
+.demo .actions .content .product .variants .icon, .demo .actions .content .cart .variants .icon, .demo .actions .content .checkout .variants .icon {
+  flex: 1;
+  text-align: center;
+}
+.demo .actions .content .product .variants .variant, .demo .actions .content .cart .variants .variant, .demo .actions .content .checkout .variants .variant {
+  flex: 2;
+  text-align: center;
+}
+.demo .actions .content .chevron {
+  width: 150px;
+  height: 20px;
+  margin: 0 auto;
+  border-top: 20px solid #aaa;
+  border-left: 75px solid white;
+  border-right: 75px solid white;
+  border-bottom: 0;
+}
+.demo .outcome {
+  display: flex;
+  border: 0.5px solid #333;
 }
 .demo .outcome .title {
-  flex: 0 1 1%;
   background: #38a070;
-}
-.demo .outcome .content {
-  flex: 0 1 99%;
 }
 
 /*# sourceMappingURL=src/css/demo.css.map */
