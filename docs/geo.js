@@ -12,7 +12,7 @@ function geoLocation() {
   };
 
   const country = countries[Math.floor(Math.random() * countries.length)];
-  const region = regions[country][Math.floor(Math.random() * regions.length)];
+  const region = regions[country][Math.floor(Math.random() * Object.keys(regions).length)];
 
-  return { country, region};
+  return { country, region };
 }

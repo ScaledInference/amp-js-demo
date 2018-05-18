@@ -6,40 +6,136 @@
     <link href='css/demo.css' rel='stylesheet' />
 
     <!--  Replace MOCK_KEY_RANDOM with your Amp Project Key -->
-    <script src='https://amp.ai/libs/03016c7832d5db5c.js'></script>
+    <script src='https://amp.ai/libs/6ed43ce4b6269097.js'></script>
     <script src='geo.js'></script>
   </head>
   <body>
     <script>
       // Context
-      const loc = geoLocation();
-      const newCustomer = Math.round(Math.random()) === 0 ? false : true;
+      let context = {};
+      let useCase = 0;
+      localStorage.setItem('key', '6ed43ce4b6269097');
+
+      switch(useCase) {
+        case 0:
+        const slowConnection = Math.round(Math.random()) === 0 ? false : true;
+        context = { slowConnection };
+        break;
+
+        case 1:
+        const location = geoLocation();
+        context = { location };
+        break;
+
+        case 2:
+        const newCustomer = Math.round(Math.random()) === 0 ? false : true;
+        context = { newCustomer };
+        break;
+
+        case 3:
+        const timeOfDay = ['night', 'morning', 'afternoon', 'evening'][Math.floor(Math.random() * 4)];
+        context = { timeOfDay };
+        break;
+
+        default:
+        context = {};
+      }
 
       // Observe context
-      amp.observe('UserContext', { location: loc, newCustomer });
+      amp.observe('UserContext', { context });
 
       // Make decision
       const decision = amp.decide('AmpedCart', {
         ctaColor: ['rgb(253, 142, 25)', 'rgb(38, 138, 251)', 'rgb(225, 63, 63)'],
-        discount: [true, false],
-        freeShipping: [30, 60, 120]
+        btnSequence: ['add', 'addBuy', 'addQuick', 'addBuyQuick'],
+        rushShipping: [0, 30, 120]
       });
     </script>
 
-    <div class='nav'>
-      <div class='icon'>
-        <img src="images/icon.png" alt="icon">
+    <div class="demo">
+      <div class="hud">
+        <div class="stories">
+          <label for="stories">Choose the context you're interested in:</label>
+          <select name="stories" id="stories" class="round">
+            <option value="slow">Slow Connection</option>
+            <option value="color">CTA Color</option>
+            <option value="return">Return Customers</option>
+            <option value="timeOfDay">Time of Day</option>
+          </select>
+        </div>
+        <div class="actions">
+          <button class='run'>Run</button>
+          <button class='runMany'>Run Many</button>
+        </div>
       </div>
-      <div class='title'>Amped Mobile Stores</div>
+      <div class='context'>
+        <div class="title">
+          <div>Context</div>
+        </div>
+        <div class="content">
+          <div class="description">
+            Observe events or properties that provide context for this run.
+          </div>
+          <div class="result">
+            <div class="icon">☀️</div>
+            <div class="label">Afternoon</div>
+          </div>
+        </div>
+      </div>
       <div class="actions">
-        <div class='ctaBtn'>Cart - 0 Items</div>
+        <div class="title">
+          <div>Actions</div>
+        </div>
+        <div class="content">
+          <div class="description">
+            Decide properties that affect the behavior or experience in this run.
+          </div>
+          <div class="products">
+            <div class="variant1">
+              <div class="result">
+                <div class="icon"></div>
+                <div class="label">CTA Color</div>
+              </div>
+            </div>
+            <div class="variant2">
+              <div class="result">
+                <div class="icon">
+                  <button class="add">Add</button>
+                  <button class="buy">Buy Now</button>
+                  <button class="quick">Quick Checkout</button>
+                </div>
+                <div class="label">Button Options</div>
+              </div>
+            </div>
+            <div class="variant3">
+              <div class="result">
+                <div class="icon">📦</div>
+                <div class="unit">minutes</div>
+                <div class="label">Rush Shipping</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="outcome">
+        <div class="title">
+          <div>Outcome</div>
+        </div>
+        <div class="content">
+          <div class="description">
+              Observe events or properties used to measure success in this run.
+          </div>
+          <div class="result">
+            <div class="icon">🚫</div>
+            <div class="label">No Sale</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class='main'></div>
 
-    <script src="categories.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src='templates.js'></script>
-    <script src='app.js'></script>
+    <script src='listeners.js'></script>
+    <script src='context.js'></script>
+    <script src='actions.js'></script>
+    <script src='demo.js'></script>
   </body>
 </html>

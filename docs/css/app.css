@@ -2,50 +2,49 @@
   margin: 40px 0 80px;
 }
 .cart .header {
+  display: flex;
+  justify-content: space-around;
   height: 20px;
 }
 .cart .header .thumbnail, .cart .header .desc, .cart .header .quantity, .cart .header .price, .cart .header .subtotal {
-  float: left;
   font-weight: bold;
 }
 .cart .header .thumbnail {
-  width: 10%;
+  flex: 1 1 10%;
   text-align: center;
 }
 .cart .header .desc {
-  width: 50%;
+  flex: 0 1 40%;
   padding-left: 76px;
   text-align: left;
 }
-.cart .header .quantity, .cart .header .price {
-  width: 10%;
+.cart .header .quantity {
+  flex: 0 1 10%;
   text-align: center;
 }
-.cart .header .subtotal {
-  float: right;
-  width: 10%;
+.cart .header .price, .cart .header .subtotal {
+  flex: 0 1 20%;
   text-align: center;
 }
 .cart .items {
   border-bottom: 0.5px solid #ccc;
 }
 .cart .items .item {
+  display: flex;
+  justify-content: space-around;
   height: 100px;
   margin: 40px 0;
   overflow: hidden;
 }
 .cart .items .item .thumbnail {
-  float: left;
-  width: 10%;
+  flex: 1 1 10%;
   text-align: center;
 }
 .cart .items .item .thumbnail img {
   height: 76px;
 }
 .cart .items .item .desc {
-  float: left;
-  width: 50%;
-  padding-left: 76px;
+  flex: 0 1 40%;
 }
 .cart .items .item .desc .name {
   font-size: 14px;
@@ -56,21 +55,18 @@
   font-size: 13px;
 }
 .cart .items .item .quantity {
-  float: left;
-  width: 10%;
+  flex: 0 1 10%;
   text-align: center;
 }
 .cart .items .item .price {
-  float: left;
-  width: 10%;
+  flex: 20%;
   text-align: center;
 }
 .cart .items .item .price:before {
   content: "$";
 }
 .cart .items .item .subtotal {
-  float: right;
-  width: 10%;
+  flex: 0 1 20%;
   font-weight: bold;
   text-align: center;
 }
@@ -79,6 +75,7 @@
 }
 .cart .summary {
   margin-top: 30px;
+  padding: 0 7%;
   text-align: right;
 }
 .cart .summary .total, .cart .summary .discountTotal {
