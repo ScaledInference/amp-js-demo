@@ -3,82 +3,187 @@
 }
 
 .demo {
-  width: 500px;
+  width: 600px;
   font-family: sans-serif;
 }
+.demo .hud {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.demo .hud .stories {
+  flex: 1 80%;
+}
+.demo .hud .stories select {
+  display: inline-block;
+  padding: 0.7em 3.5em 0.5em 1em;
+  margin: 10px 0 30px;
+  line-height: 1.5em;
+  background-color: white;
+  border: 0.5px solid #777;
+  border-radius: 4px;
+  font: inherit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.demo .hud .stories select.round {
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), radial-gradient(#ddd 70%, transparent 72%);
+  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - .5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.demo .hud .stories label {
+  display: block;
+}
+.demo .hud .actions {
+  flex: 1 20%;
+  border: none;
+}
+.demo .hud .actions button {
+  width: 112px;
+  height: 44px;
+  line-height: 30px;
+  border: none;
+  border-radius: 8px;
+  margin: 5px;
+  background: orange;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
 .demo .title {
-  flex: 0.1;
-  height: 200px;
+  height: 120px;
   width: 26px;
   background: tan;
   border-right: 0.5px solid #333;
 }
 .demo .title div {
-  transform: translateY(100px) rotateZ(-90deg);
+  transform: translateY(66px) rotateZ(-90deg);
 }
 .demo .content {
   display: flex;
-  flex: 0.9;
   justify-content: space-around;
-  flex-wrap: wrap;
+  width: 100%;
+}
+.demo .content .description {
+  flex: 1 44%;
+  text-align: left;
+  padding: 20px;
+}
+.demo .content .result {
+  flex: 1;
+  padding: 10px;
+}
+.demo .content .result .label {
+  font-size: 18px;
 }
 .demo .context {
   display: flex;
   margin-bottom: 10px;
   border: 0.5px solid #333;
 }
-.demo .context .content .connection, .demo .context .content .timeOfDay, .demo .context .content .location, .demo .context .content .customer {
-  flex: 0 1 50%;
+.demo .context .content {
+  display: flex;
+  align-items: center;
+  flex: 1;
   text-align: center;
 }
-.demo .context .content .connection .icon, .demo .context .content .timeOfDay .icon, .demo .context .content .location .icon, .demo .context .content .customer .icon {
+.demo .context .content .result {
+  display: flex;
+  flex-direction: column;
+}
+.demo .context .content .result .icon {
   height: 60px;
-  font-size: 48px;
+  font-size: 46px;
 }
 .demo .actions {
   display: flex;
   margin-bottom: 10px;
   border: 0.5px solid #333;
 }
-.demo .actions div {
-  transform: translateY(150px) rotateZ(-90deg);
-}
 .demo .actions .title {
+  height: auto;
   background: orange;
 }
-.demo .actions .content {
-  display: block;
+.demo .actions .title div {
+  transform: translateY(93px) rotateZ(-90deg);
 }
-.demo .actions .content .product .label, .demo .actions .content .cart .label, .demo .actions .content .checkout .label {
-  padding: 15px;
-}
-.demo .actions .content .product .variants, .demo .actions .content .cart .variants, .demo .actions .content .checkout .variants {
+.demo .actions .content .products {
   display: flex;
   justify-content: space-around;
+  align-items: flex-end;
 }
-.demo .actions .content .product .variants .icon, .demo .actions .content .cart .variants .icon, .demo .actions .content .checkout .variants .icon {
+.demo .actions .content .products .variant1, .demo .actions .content .products .variant2, .demo .actions .content .products .variant3 {
+  display: flex;
+  justify-content: space-around;
   flex: 1;
+}
+.demo .actions .content .products .variant1 .result, .demo .actions .content .products .variant2 .result, .demo .actions .content .products .variant3 .result {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
-.demo .actions .content .product .variants .variant, .demo .actions .content .cart .variants .variant, .demo .actions .content .checkout .variants .variant {
-  flex: 2;
-  text-align: center;
+.demo .actions .content .products .variant1 .result .icon, .demo .actions .content .products .variant2 .result .icon, .demo .actions .content .products .variant3 .result .icon {
+  font-size: 46px;
 }
-.demo .actions .content .chevron {
-  width: 150px;
-  height: 20px;
-  margin: 0 auto;
-  border-top: 20px solid #aaa;
-  border-left: 75px solid white;
-  border-right: 75px solid white;
-  border-bottom: 0;
+.demo .actions .content .products .variant1 .icon {
+  height: 60px;
+  width: 60px;
+  margin: 35px auto;
+  background: red;
+}
+.demo .actions .content .products .variant2 .icon {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.demo .actions .content .products .variant2 .icon button {
+  width: 80px;
+  height: 30px;
+  line-height: 28px;
+  border: 0.5px solid #1670fa;
+  border-radius: 8px;
+  margin: 5px;
+  background: white;
+  color: #1670fa;
+  font-size: 12px;
+  cursor: pointer;
+}
+.demo .actions .content .products .variant2 .icon button :hover {
+  background: #1670fa;
+}
+.demo .actions .content .products .variant3 .unit {
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 .demo .outcome {
   display: flex;
+  margin-bottom: 10px;
   border: 0.5px solid #333;
 }
 .demo .outcome .title {
   background: #38a070;
+}
+.demo .outcome .content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  text-align: center;
+}
+.demo .outcome .content .result {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.demo .outcome .content .result .icon {
+  font-size: 46px;
+}
+.demo .outcome .content .result .label {
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=src/css/demo.css.map */
