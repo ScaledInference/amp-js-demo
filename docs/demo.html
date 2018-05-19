@@ -5,66 +5,30 @@
 
     <link href='css/demo.css' rel='stylesheet' />
 
-    <!--  Replace MOCK_KEY_RANDOM with your Amp Project Key -->
-    <script src='https://amp.ai/libs/6ed43ce4b6269097.js'></script>
-    <script src='geo.js'></script>
+    <script>
+      window.ampConfig = {
+        domain: 'https://amp.ai',
+        sessionTTL: 0,
+        builtinEvents: [
+          'AmpSession'
+        ]
+      };
+    </script>
   </head>
   <body>
-    <script>
-      // Context
-      let context = {};
-      let useCase = 0;
-      localStorage.setItem('key', '6ed43ce4b6269097');
-
-      switch(useCase) {
-        case 0:
-        const slowConnection = Math.round(Math.random()) === 0 ? false : true;
-        context = { slowConnection };
-        break;
-
-        case 1:
-        const location = geoLocation();
-        context = { location };
-        break;
-
-        case 2:
-        const newCustomer = Math.round(Math.random()) === 0 ? false : true;
-        context = { newCustomer };
-        break;
-
-        case 3:
-        const timeOfDay = ['night', 'morning', 'afternoon', 'evening'][Math.floor(Math.random() * 4)];
-        context = { timeOfDay };
-        break;
-
-        default:
-        context = {};
-      }
-
-      // Observe context
-      amp.observe('UserContext', { context });
-
-      // Make decision
-      const decision = amp.decide('AmpedCart', {
-        ctaColor: ['rgb(253, 142, 25)', 'rgb(38, 138, 251)', 'rgb(225, 63, 63)'],
-        btnSequence: ['add', 'addBuy', 'addQuick', 'addBuyQuick'],
-        rushShipping: [0, 30, 120]
-      });
-    </script>
-
     <div class="demo">
       <div class="hud">
         <div class="stories">
           <label for="stories">Choose the context you're interested in:</label>
           <select name="stories" id="stories" class="round">
-            <option value="slow">Slow Connection</option>
-            <option value="color">CTA Color</option>
+            <option value="connection" >Connection</option>
+            <option value="location">Location</option>
             <option value="return">Return Customers</option>
             <option value="timeOfDay">Time of Day</option>
           </select>
         </div>
         <div class="actions">
-          <button class='run'>Run</button>
+          <button class='run' data-count=0>Run</button>
           <button class='runMany'>Run Many</button>
         </div>
       </div>
@@ -133,9 +97,13 @@
       </div>
     </div>
 
-    <script src='listeners.js'></script>
-    <script src='context.js'></script>
-    <script src='actions.js'></script>
-    <script src='demo.js'></script>
+    <script type='module' src='geo.js'></script>
+    <script type='module' src='context.js'></script>
+    <script type='module' src='demo.js'></script>
+    <script type='module' src='loadScript.js'></script>
+
+    <script type='module' src='listeners.js'></script>
+    <script type='module' src='actions.js'></script>
+    <script type='module' src='outcome.js'></script>
   </body>
 </html>
