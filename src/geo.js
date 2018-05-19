@@ -1,4 +1,4 @@
-function geoLocation() {
+export default function geoLocation() {
   const countries = ['United States', 'Great Britain', 'Russia', 'Ukraine', 'Israel', 'India', 'China', 'Turkey'];
   const regions = {
     'United States': ['Arizona', 'California', 'Idaho', 'Oregon', 'Utah', 'Washington'],

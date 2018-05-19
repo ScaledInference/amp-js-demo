@@ -1,17 +1,18 @@
+import loadScript from './loadScript.js';
+import { run } from './demo.js';
+
 // change in context
 document.querySelector('#stories').addEventListener('change', (e) => {
   const context = e.target.value;
-  const key = '';
-  const builtinEvents = [
-    'AmpSession'
-  ];
+  let key = '';
 
+console.log(context);
   switch(context) {
-    case 'slow':
+    case 'connection':
     key = '6ed43ce4b6269097';
     break;
     
-    case 'color':
+    case 'location':
     key = 'a8fd142ccb629f85';
     break;
 
@@ -29,46 +30,28 @@ document.querySelector('#stories').addEventListener('change', (e) => {
   }
   
   localStorage.setItem('key', key);
-  amp = new Amp({ key, builtinEvents });
-  amp.session = amp.Session();
+  loadScript();
 });
 
 document.addEventListener("DOMContentLoaded", function() {
    
   if (localStorage.getItem("key") == "") {
-    document.querySelector(".play.btn").dataset.count = 0;
+    document.querySelector(".run").dataset.count = 0;
     localStorage.setItem("count", 0);
   } else {
-    document.querySelector("#key").value = localStorage.getItem("key");
-    
     if (localStorage.getItem('count') === null) {
       localStorage.setItem('count', 0);
     } else {
       localStorage.setItem('count', localStorage.getItem('count'));
     }
-    document.querySelector(".play.btn").dataset.count = localStorage.getItem("count");
+    document.querySelector(".run").dataset.count = localStorage.getItem("count");
     
+    localStorage.setItem('key', '6ed43ce4b6269097');
     loadScript();
   }
 });
 
-document.querySelector("#key").addEventListener("keyup", function(e) {
-  if (typeof Amp === "undefined") { // invalid key or not loaded
-    localStorage.setItem("key", e.target.value);
-    loadScript();
-  } else {
-    var newKey = e.target.value;
-    var oldKey = localStorage.getItem("key");
-
-    localStorage.setItem("key", e.target.value);
-    if (newKey.indexOf(oldKey) === -1) {
-      localStorage.setItem("count", 0);
-      loadScript(); 
-    } 
-  }
-});
-
-document.querySelector(".play.btn").addEventListener("click", function(e) {
+document.querySelector(".run").addEventListener("click", function(e) {
   if (typeof Amp !== "undefined") {
     if (localStorage.getItem('count') === null) {
       localStorage.setItem('count', 0);
@@ -84,7 +67,7 @@ document.querySelector(".play.btn").addEventListener("click", function(e) {
   }
 });
 
-document.querySelector(".fast-forward.btn").addEventListener("click", function(e) {
+document.querySelector(".runMany").addEventListener("click", function(e) {
   if (typeof Amp !== "undefined") {
     if (localStorage.getItem('count') === null) {
       localStorage.setItem('count', 0);
@@ -101,7 +84,7 @@ document.querySelector(".fast-forward.btn").addEventListener("click", function(e
 
       window.interval = setInterval(function(){
         localStorage.setItem('count', (parseInt(localStorage.getItem('count'), 10) + parseInt(1, 10)));
-        document.querySelector(".play.btn").dataset.count = localStorage.getItem('count');
+        document.querySelector(".run").dataset.count = localStorage.getItem('count');
         amp.session = amp.Session();
         
         run();
