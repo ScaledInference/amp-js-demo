@@ -1,6 +1,6 @@
 import context from './context.js';
 import takeAction from './actions.js';
-import sale from './outcome.js';
+import saleFromContext from './outcome.js';
 
 let decision = {};
 
