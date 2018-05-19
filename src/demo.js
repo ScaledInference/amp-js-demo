@@ -2,6 +2,10 @@ import context from './context.js';
 import takeAction from './actions.js';
 import saleFromContext from './outcome.js';
 
+const orange = 'rgb(253, 142, 25)';
+const blue = 'rgb(38, 138, 251)';
+const red = 'rgb(225, 63, 63)';
+
 let decision = {};
 
 function run() {
@@ -11,7 +15,7 @@ function run() {
 
   // Make decision
   decision = amp.decide('AmpedCart', {
-    ctaColor: ['rgb(253, 142, 25)', 'rgb(38, 138, 251)', 'rgb(225, 63, 63)'],
+    ctaColor: [orange, blue, red],
     btnSequence: ['add', 'addBuy', 'addQuick', 'addBuyQuick'],
     rushShipping: [0, 30, 120]
   });
@@ -19,9 +23,10 @@ function run() {
   takeAction();
 
   // Observe outcome
-  if (saleFromContext(ctx)) {
+  if (saleFromContext(ctx, decision)) {
     amp.observe('Sale');
   }
 }
 
-export { run, decision };
+const colors = { orange, blue, red };
+export { run, decision, colors };

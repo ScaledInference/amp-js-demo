@@ -80,6 +80,7 @@ export default function context() {
 
     case 'timeOfDay':
     const timeOfDay = ['night', 'morning', 'afternoon', 'evening'][Math.floor(Math.random() * 4)];
+    context = { timeOfDay };
     const icons = {
       night: '🌙',
       morning: '🌇',
