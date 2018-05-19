@@ -6,7 +6,6 @@ document.querySelector('#stories').addEventListener('change', (e) => {
   const context = e.target.value;
   let key = '';
 
-console.log(context);
   switch(context) {
     case 'connection':
     key = '6ed43ce4b6269097';

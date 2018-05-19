@@ -28,7 +28,7 @@ export default function saleFromContext(context, decision) {
   
   // Web Story #2
   if (context.location) {
-    switch(location.country) {
+    switch(context.location.country) {
       case 'United States':
       switch (cta) {
         case colors.orange:
