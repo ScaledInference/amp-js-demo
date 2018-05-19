@@ -6,8 +6,8 @@ let decision = {};
 
 function run() {
   // Observe context
-  const context = context();
-  amp.observe('UserContext', { context });
+  const ctx = context();
+  amp.observe('UserContext', { context: ctx });
 
   // Make decision
   decision = amp.decide('AmpedCart', {
@@ -19,7 +19,7 @@ function run() {
   takeAction();
 
   // Observe outcome
-  if (saleFromContext(context)) {
+  if (saleFromContext(ctx)) {
     amp.observe('Sale');
   }
 }
