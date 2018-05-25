@@ -4,6 +4,7 @@
 
 .demo {
   width: 600px;
+  margin: 40px auto;
   font-family: sans-serif;
 }
 .demo .hud {
@@ -11,33 +12,18 @@
   justify-content: space-around;
   align-items: center;
 }
-.demo .hud .stories {
-  flex: 1 80%;
+.demo .hud .key {
+  margin: 20px 0 35px;
+  width: 60%;
+  color: gray;
+  font-size: 14px;
 }
-.demo .hud .stories select {
-  display: inline-block;
-  padding: 0.7em 3.5em 0.5em 1em;
-  margin: 10px 0 30px;
-  line-height: 1.5em;
-  background-color: white;
-  border: 0.5px solid #777;
-  border-radius: 4px;
-  font: inherit;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-.demo .hud .stories select.round {
-  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), radial-gradient(#ddd 70%, transparent 72%);
-  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - .5em) 0.5em;
-  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-.demo .hud .stories label {
-  display: block;
+.demo .hud .key input {
+  border: none;
+  border-bottom: 1px solid #aaa;
+  font-size: 18px;
+  font-family: "Andale Mono";
+  width: 205px;
 }
 .demo .hud .actions {
   flex: 1 20%;
@@ -47,10 +33,10 @@
   width: 112px;
   height: 44px;
   line-height: 30px;
-  border: none;
-  border-radius: 8px;
   margin: 5px;
   background: orange;
+  border: none;
+  border-radius: 8px;
   color: white;
   font-size: 14px;
   cursor: pointer;
@@ -108,11 +94,46 @@
   margin-bottom: 10px;
   border: 0.5px solid #333;
 }
+.demo .context .title {
+  height: auto;
+}
+.demo .context .title div {
+  transform: translateY(110px) rotateZ(-90deg);
+}
 .demo .context .content {
   display: flex;
   align-items: center;
   flex: 1;
   text-align: center;
+}
+.demo .context .content .stories {
+  flex: 1 80%;
+}
+.demo .context .content .stories label {
+  display: block;
+  margin-top: 20px;
+}
+.demo .context .content .stories select {
+  display: inline-block;
+  padding: 0.7em 3.5em 0.5em 1em;
+  margin: 10px 0 30px;
+  line-height: 1.5em;
+  background-color: white;
+  border: 0.5px solid #777;
+  border-radius: 4px;
+  font: inherit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.demo .context .content .stories select.round {
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), radial-gradient(#ddd 70%, transparent 72%);
+  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - .5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 .demo .context .content .result {
   display: flex;
@@ -132,7 +153,7 @@
   background: orange;
 }
 .demo .actions .title div {
-  transform: translateY(93px) rotateZ(-90deg);
+  transform: translateY(106px) rotateZ(-90deg);
 }
 .demo .actions .content {
   align-items: center;

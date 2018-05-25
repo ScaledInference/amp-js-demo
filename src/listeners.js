@@ -1,37 +1,6 @@
 import loadScript from './loadScript.js';
 import { run } from './demo.js';
 
-// change in context
-document.querySelector('#stories').addEventListener('change', (e) => {
-  const context = e.target.value;
-  let key = '';
-
-  switch(context) {
-    case 'connection':
-    key = '6ed43ce4b6269097';
-    break;
-    
-    case 'location':
-    key = 'a8fd142ccb629f85';
-    break;
-
-    case 'return':
-    key = 'b170ecf20a216d79';
-    break;
-
-    case 'timeOfDay':
-    key = '38f4be1eab0b0b0d';
-    break;
-
-    default:
-    key = '6ed43ce4b6269097';
-    break;
-  }
-  
-  localStorage.setItem('key', key);
-  loadScript();
-});
-
 document.addEventListener("DOMContentLoaded", function() {
    
   if (localStorage.getItem("key") == "") {
@@ -45,8 +14,24 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     document.querySelector(".run").dataset.count = localStorage.getItem("count");
     
-    localStorage.setItem('key', '6ed43ce4b6269097');
     loadScript();
+  }
+});
+
+document.querySelector("#key").addEventListener("keyup", function(e) {
+  if (typeof Amp === "undefined") { // invalid key or not loaded
+    localStorage.setItem("key", e.target.value);
+    loadScript();
+  } else {
+    var newKey = e.target.value;
+    var oldKey = localStorage.getItem("key");
+
+    localStorage.setItem("key", e.target.value);
+    
+    if (newKey.indexOf(oldKey) === -1) {
+      localStorage.setItem("count", 0);
+      loadScript(); 
+    } 
   }
 });
 
@@ -84,6 +69,10 @@ document.querySelector(".runMany").addEventListener("click", function(e) {
       window.interval = setInterval(function(){
         localStorage.setItem('count', (parseInt(localStorage.getItem('count'), 10) + parseInt(1, 10)));
         document.querySelector(".run").dataset.count = localStorage.getItem('count');
+        
+        const contextValue = ['connection', 'location', 'return', 'timeOfDay'][Math.floor(Math.random() * 4)];
+        document.querySelector('#stories').value = contextValue;
+
         amp.session = amp.Session();
         
         run();
