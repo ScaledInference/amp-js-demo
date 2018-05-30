@@ -10,10 +10,10 @@ export default function saleFromContext(context, decision) {
   if (context.slowConnection !== undefined) {
     switch(btnSequence) {
       case 'add':
-      return context.slowConnection ? sale(5) : sale(60);
+      return context.slowConnection ? sale(5) : sale(20);
 
       case 'addBuy':
-      return context.slowConnection ? sale(10) : sale(70);
+      return context.slowConnection ? sale(10) : sale(60);
 
       case 'addQuick':
       return context.slowConnection ? sale(20) : sale(40);
