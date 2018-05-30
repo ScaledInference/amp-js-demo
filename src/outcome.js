@@ -7,19 +7,19 @@ export default function saleFromContext(context, decision) {
   const rushShipping = decision.rushShipping;
 
   // Web Story #1
-  if (context.slowConnection) {
+  if (context.slowConnection !== undefined) {
     switch(btnSequence) {
       case 'add':
-      return context.slowConnection ? sale(10) : sale(50);
+      return context.slowConnection ? sale(5) : sale(60);
 
       case 'addBuy':
-      return context.slowConnection ? sale(40) : sale(60);
+      return context.slowConnection ? sale(10) : sale(70);
 
       case 'addQuick':
-      return context.slowConnection ? sale(60) : sale(40);
+      return context.slowConnection ? sale(20) : sale(40);
 
       case 'addBuyQuick':
-      return context.slowConnection ? sale(80) : sale(30);
+      return context.slowConnection ? sale(55) : sale(30);
 
       default:
       console.log('Connection button sequence is not matching.');
@@ -155,19 +155,19 @@ export default function saleFromContext(context, decision) {
   }
   
   // Web Story #3
-  if (context.newCustomer) {
+  if (context.newCustomer !== undefined) {
     switch(btnSequence) {
       case 'add':
-      return context.newCustomer ? sale(80) : sale(30);
+      return context.newCustomer ? sale(55) : sale(10);
 
       case 'addBuy':
-      return context.newCustomer ? sale(30) : sale(70);
+      return context.newCustomer ? sale(25) : sale(20);
 
       case 'addQuick':
-      return context.newCustomer ? sale(20) : sale(80);
+      return context.newCustomer ? sale(15) : sale(20);
 
       case 'addBuyQuick':
-      return context.newCustomer ? sale(10) : sale(90);
+      return context.newCustomer ? sale(5) : sale(50);
 
       default:
       console.log('New customer button sequence is not matching.');
