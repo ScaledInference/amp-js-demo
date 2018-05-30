@@ -15,7 +15,7 @@ export default function takeAction() {
   ctaButtons.forEach(button => { 
     button.style.borderColor = decision.ctaColor; 
     button.style.color = decision.ctaColor;
-    button.style.display = 'none';
+    button.style.visibility = 'hidden';
   });
 
   // cta button option decision
@@ -23,15 +23,15 @@ export default function takeAction() {
   const buyButton = document.querySelector('.variant2 .result .icon .buy');
   const quickButton = document.querySelector('.variant2 .result .icon .quick');
 
-  addButton.style.display = 'block';
+  addButton.style.visibility = 'visible';
 
   if (decision.btnSequence === 'addBuy') {
-    buyButton.style.display = 'block';
+    buyButton.style.visibility = 'visible';
   } else if (decision.btnSequence === 'addQuick') {
-    quickButton.style.display = 'block';
+    quickButton.style.visibility = 'visible';
   } else if (decision.btnSequence === 'addBuyQuick') {
-    buyButton.style.display = 'block';
-    quickButton.style.display = 'block';
+    buyButton.style.visibility = 'visible';
+    quickButton.style.visibility = 'visible';
   }
 
   // checkout action
