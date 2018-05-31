@@ -53,7 +53,7 @@ function handleNavigation() {
     main.innerHTML = Handlebars.templates.product(products);
     listenersForCartButtons();
     handleActions();
-    setCartSize();
+    syncCartWithView();
     break;
 
     case '#/cart':
@@ -169,10 +169,14 @@ function listenersForCartButtons() {
   });
 }
 
-function setCartSize() {
+function syncCartWithView() {
   let numItems = 0;
   cart.items.forEach(item => {
     numItems += parseInt(item.quantity, 10);
+
+    const productIdElement = document.querySelector('[data-id=\"' +item.id+ '\"]');
+    const targetQuantity = productIdElement.parentElement.parentElement.querySelector('.quantity');
+    targetQuantity.textContent = `Quantity: ${item.quantity}`;
   });
 
   document.querySelector('.ctaBtn').textContent = `Cart - ${numItems} Items`;
