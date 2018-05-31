@@ -113,7 +113,7 @@
   font-weight: bold;
 }
 .store .category .products {
-  height: 480px;
+  height: 500px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -121,8 +121,8 @@
 .store .category .products .product {
   display: inline-block;
   position: relative;
-  width: 150px;
-  height: 450px;
+  width: 250px;
+  height: 500px;
   margin: 20px;
 }
 .store .category .products .product .thumbnail {
@@ -154,34 +154,27 @@
 .store .category .products .product .price:before {
   content: "$";
 }
-.store .category .products .product .overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  transition: all 0.5 ease-in-out;
-  text-align: center;
+.store .category .products .product .cartActions {
+  margin-top: 20px;
 }
-.store .category .products .product .overlay.show {
-  visibility: visible;
-}
-.store .category .products .product .overlay.hide {
-  visibility: hidden;
-}
-.store .category .products .product .overlay .addToCart {
+.store .category .products .product .cartActions .addToCart, .store .category .products .product .cartActions .buyNow, .store .category .products .product .cartActions .quick {
   display: inline-block;
-  width: 80px;
-  height: 30px;
-  margin-top: 200px;
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-  color: white;
-  line-height: 30px;
-  background: #1670fa;
+  width: auto;
+  height: auto;
+  line-height: 20px;
+  padding: 5px;
+  margin-right: 5px;
+  color: #1670fa;
+  background: white;
+  border: 0.5px solid #1670fa;
   font-size: 12px;
   border-radius: 8px;
+  text-align: center;
   cursor: pointer;
+}
+.store .category .products .product .cartActions .buyNow, .store .category .products .product .cartActions .quick {
+  background: white;
+  color: #1670fa;
 }
 
 .checkout h2 {

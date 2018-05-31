@@ -51,6 +51,7 @@ function handleNavigation() {
   switch (location.hash) {
     case '/', '':
     main.innerHTML = setupProductPage();
+    handleActions();
     break;
 
     case '#/cart':
@@ -67,6 +68,11 @@ function handleNavigation() {
     ctaBtn.textContent = 'Submit Order';
 
     main.innerHTML = Handlebars.templates.checkout(shoppingCart);
+    if (decision.rushShipping === 0) {
+      document.querySelector('.shipping').style.visibility = 'hidden';
+    } else {
+      document.querySelector('.shipping').style.visibility = 'visible';
+    }
     document.querySelector('.checkoutBtn').style.backgroundColor = decision.ctaColor;
     break;
     
@@ -87,17 +93,7 @@ function setupProductPage() {
   document.querySelector('.main').innerHTML = html;
 
   setTimeout(() => {
-    document.querySelectorAll('.product').forEach(element => { 
-      element.addEventListener('mouseover', (e) => {
-        element.querySelector('.overlay').className = 'overlay show';
-      });
-
-      element.addEventListener('mouseout', (e) => {
-        element.querySelector('.overlay').className = 'overlay hide';
-      });
-    });
-
-    document.querySelectorAll('.addToCart').forEach(element => {
+    document.querySelectorAll('.btn').forEach(element => {
       element.addEventListener('click', (e) => {
         const target = e.target;
 
@@ -105,9 +101,6 @@ function setupProductPage() {
         let cartSize = 0;
         let total = 0;
 
-        // take action on discount from Amp decision
-        let discount = decision.discount ? 5 : 0;
-        
         cart.items.forEach(item => {
           if (item.id === target.dataset.id) {
             item.quantity = parseInt(item.quantity, 10) + 1;
@@ -135,17 +128,17 @@ function setupProductPage() {
         } 
 
         cart.total = parseFloat(total, 10).toFixed(2);
-        if (discount !== 0) {
-          cart.discount = discount;
-          cart.discountTotal = parseFloat(total - total * (discount / 100), 10).toFixed(2);
-        }
 
-        // use Amp decision for free shipping
-        cart.shipping = decision.freeShipping;
+        if (target.textContent === 'Buy Now') {
+          location.hash = '/checkout';
+        } else if (target.textContent === 'Quick Checkout') {
+          location.hash = '/thank_you';
+        }
 
         document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
       });
     });
+
   }, 500);
 
   let numItems = 0;
@@ -155,4 +148,26 @@ function setupProductPage() {
 
   document.querySelector('.ctaBtn').textContent = `Cart - ${numItems} Items`;
   return html;
+}
+
+function handleActions() {
+  const buyButton = document.querySelectorAll('.buyNow');
+  const quickButton = document.querySelectorAll('.quick');
+
+  document.querySelectorAll('.btn').forEach(btn => { 
+    btn.style.borderColor = decision.ctaColor;
+    btn.style.color = decision.ctaColor;
+  });
+
+  buyButton.forEach(btn => { btn.style.visibility = 'hidden'; });
+  quickButton.forEach(btn => { btn.style.visibility = 'hidden'; });
+
+  if (decision.btnSequence === 'addBuy') {
+    buyButton.forEach(btn => { btn.style.visibility = 'visible'; });
+  } else if (decision.btnSequence === 'addQuick') {
+    quickButton.forEach(btn => {btn.style.visibility = 'visible'; });
+  } else if (decision.btnSequence === 'addBuyQuick') {
+    buyButton.forEach(btn => { btn.style.visibility = 'visible'; });
+    quickButton.forEach(btn => { btn.style.visibility = 'visible'; });
+  }
 }
