@@ -7,10 +7,12 @@
 
     <!--  Replace MOCK_KEY_RANDOM with your Amp Project Key -->
     <script type='text/javascript' src='https://amp.ai/libs/03016c7832d5db5c.js'></script>
-    <script src='geo.js'></script>
+    <script type='module' src='geo.js'></script>
   </head>
   <body>
-    <script>
+    <script type='module'>
+      import geoLocation from './geo.js';
+
       // Context
       const loc = geoLocation();
       console.log(loc);
@@ -20,7 +22,7 @@
       amp.observe('UserContext', { location: loc, newCustomer });
 
       // Make decision
-      const decision = amp.decide('AmpedCart', {
+      window.decision = amp.decide('AmpedCart', {
         ctaColor: ['rgb(253, 142, 25)', 'rgb(38, 138, 251)', 'rgb(225, 63, 63)'],
         discount: [true, false],
         freeShipping: [30, 60, 120]
