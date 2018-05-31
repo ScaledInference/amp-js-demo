@@ -1,6 +1,6 @@
 .store{
   .category{
-    height: 500px;
+    height: 520px;
     margin: 0 0 80px;
     
     .title{
@@ -8,7 +8,7 @@
     }
 
     .products{
-      height: 500px;
+      height: 520px;
       overflow-x: scroll;
       overflow-y: hidden;
       white-space: nowrap;
@@ -17,7 +17,7 @@
         display: inline-block;
         position: relative;
         width: 250px;
-        height: 500px;
+        height: 520px;
         margin: 20px;
 
         .thumbnail{
@@ -44,8 +44,13 @@
           white-space: normal;
           overflow-y: hidden;
         }
+        .quantity{
+          margin-top: 5px;
+          font-size: 12px;
+        }
         .price{
           padding-top: 20px;
+          font-weight: bold;
 
           &:before{
             content: "$"

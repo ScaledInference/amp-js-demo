@@ -1,20 +1,23 @@
 <div class='store'>
   {{#each categories}}
-    <div class="category">
-      <div class="title">{{title}}</div>
-      <div class="products">
+    <div class='category'>
+      <div class='title'>{{title}}</div>
+      <div class='products'>
       {{#each products}}
-        <div class="product">
-          <div class="thumbnail">
-            <img src="images/products/{{id}}.jpg" alt="image">
+        <div class='product'>
+          <div class='thumbnail'>
+            <img src='images/products/{{id}}.jpg' alt='image'>
           </div>
-          <div class="name">{{name}}</div>
-          <div class="description">{{description}}</div>
-          <div class="price">{{price}}</div>
-          <div class="cartActions">
-            <div class="addToCart btn" data-id={{id}} data-name='{{name}}'' data-description='{{description}}'' data-price={{price}}>Add To Cart</div>
-            <div class="buyNow btn" data-id={{id}} data-name='{{name}}'' data-description='{{description}}'' data-price={{price}}>Buy Now</div>
-            <div class="quick btn" data-id={{id}} data-name='{{name}}'' data-description='{{description}}'' data-price={{price}}>Quick Checkout</div>
+          <div class='name'>{{name}}</div>
+          <div class='description'>{{description}}</div>
+          <div class='priceQuantity'>
+            <div class='price'>{{price}}</div>
+            <div class='quantity'>Quantity: 0</div>
+          </div>
+          <div class='cartActions'>
+            <div class='addToCart btn' data-id={{id}} data-name='{{name}}'' data-description='{{description}}'' data-price={{price}}>Add To Cart</div>
+            <div class='buyNow btn' data-id={{id}} data-name='{{name}}'' data-description='{{description}}'' data-price={{price}}>Buy Now</div>
+            <div class='quick btn' data-id={{id}} data-name='{{name}}'' data-description='{{description}}'' data-price={{price}}>Quick Checkout</div>
           </div>
         </div>
       {{/each}}
