@@ -13,13 +13,13 @@ export default function saleFromContext(context, decision) {
       return context.slowConnection ? sale(5) : sale(20);
 
       case 'addBuy':
-      return context.slowConnection ? sale(10) : sale(60);
+      return context.slowConnection ? sale(10) : sale(80);
 
       case 'addQuick':
       return context.slowConnection ? sale(20) : sale(40);
 
       case 'addBuyQuick':
-      return context.slowConnection ? sale(55) : sale(30);
+      return context.slowConnection ? sale(75) : sale(30);
 
       default:
       console.log('Connection button sequence is not matching.');
