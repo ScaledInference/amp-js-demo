@@ -43,17 +43,8 @@
     </div>
 
     <div class="summary">
+      <div class="shipping"></div>
       <div class="total">{{cart.total}}</div>
-      {{#if cart.discount}}
-      <div class="discount">Discount of {{cart.discount}}%</div>
-      {{/if}}
-      <div class="shipping">Free Shipping if you order in {{cart.shipping}} minutes.</div>
-      {{#if cart.discount}}
-      <div class="discountTotal">{{cart.discountTotal}}</div>
-      {{/if}}
     </div>
   </div>
 </div>
-<script>
-  document.querySelector('.checkoutBtn').style.backgroundColor = decision.ctaColor;
-</script>

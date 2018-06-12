@@ -10,7 +10,7 @@
   font-weight: bold;
 }
 .cart .header .thumbnail {
-  flex: 0 1 10%;
+  flex: 1 1 10%;
   text-align: center;
 }
 .cart .header .desc {
@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 .cart .items .item .thumbnail {
-  flex: 0 1 10%;
+  flex: 1 1 10%;
   text-align: center;
 }
 .cart .items .item .thumbnail img {
@@ -45,7 +45,6 @@
 }
 .cart .items .item .desc {
   flex: 0 1 40%;
-  padding-left: 76px;
 }
 .cart .items .item .desc .name {
   font-size: 14px;
@@ -60,7 +59,7 @@
   text-align: center;
 }
 .cart .items .item .price {
-  flex: 0 1 20%;
+  flex: 20%;
   text-align: center;
 }
 .cart .items .item .price:before {
@@ -110,7 +109,7 @@
 }
 
 .store .category {
-  height: 500px;
+  height: 520px;
   margin: 0 0 80px;
 }
 .store .category .title {
@@ -118,15 +117,15 @@
 }
 .store .category .products {
   display: flex;
-  height: 480px;
+  height: 520px;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 }
 .store .category .products .product {
   position: relative;
-  flex: 1 0 150px;
-  height: 450px;
+  width: 250px;
+  height: 520px;
   margin: 20px;
 }
 .store .category .products .product .thumbnail {
@@ -152,40 +151,38 @@
   white-space: normal;
   overflow-y: hidden;
 }
+.store .category .products .product .quantity {
+  margin-top: 5px;
+  font-size: 12px;
+}
 .store .category .products .product .price {
   padding-top: 20px;
+  font-weight: bold;
 }
 .store .category .products .product .price:before {
   content: "$";
 }
-.store .category .products .product .overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  transition: all 0.5 ease-in-out;
-  text-align: center;
+.store .category .products .product .cartActions {
+  margin-top: 20px;
 }
-.store .category .products .product .overlay.show {
-  visibility: visible;
-}
-.store .category .products .product .overlay.hide {
-  visibility: hidden;
-}
-.store .category .products .product .overlay .addToCart {
+.store .category .products .product .cartActions .addToCart, .store .category .products .product .cartActions .buyNow, .store .category .products .product .cartActions .quick {
   display: inline-block;
-  width: 80px;
-  height: 30px;
-  margin-top: 200px;
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-  color: white;
-  line-height: 30px;
-  background: #1670fa;
+  width: auto;
+  height: auto;
+  line-height: 20px;
+  padding: 5px;
+  margin-right: 5px;
+  color: #1670fa;
+  background: white;
+  border: 0.5px solid #1670fa;
   font-size: 12px;
   border-radius: 8px;
+  text-align: center;
   cursor: pointer;
+}
+.store .category .products .product .cartActions .buyNow, .store .category .products .product .cartActions .quick {
+  background: white;
+  color: #1670fa;
 }
 
 .checkout h2 {
@@ -228,7 +225,9 @@
   background: #1670fa;
 }
 .checkout .shipping {
-  font-size: 13px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-style: italic;
 }
 
 .thankYou .check {
