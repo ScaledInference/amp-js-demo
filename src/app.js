@@ -9,8 +9,8 @@ const shoppingCart = { cart };
 window.addEventListener('DOMContentLoaded', (e) => {
   handleNavigation();
 
-  // use Amp decision to take action on button color
-  const ctaBtn = document.querySelector('.ctaBtn');
+  // Use Amp decision to take action on button color
+  const ctaBtn = decision.ctaColor;
 
   ctaBtn.addEventListener('click', (e) => {
     const label = e.target.textContent;
@@ -81,6 +81,9 @@ function handleNavigation() {
     case '#/thank_you':
     main.innerHTML = Handlebars.templates.thankYou(shoppingCart);
     ctaBtn.textContent = 'Continue Shopping';
+
+    //TODO: observe outcome and include total as a property
+    
     break;
     
     default:
