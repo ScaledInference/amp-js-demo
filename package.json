@@ -9,8 +9,8 @@
     "demo_sass": "sass src/css/scss/demo.scss src/css/demo.css",
     "handlebars": "handlebars src/templates -f src/templates.js -e hbs",
     "publish": "npm run app_sass; npm run demo_sass; npm run handlebars; cp -R src/images docs/images; cp -R src/*.js docs; cp src/*.html docs; cp -R src/css/ docs/css",
-    "start": "http-server ./src",
-    "start-demo": "http-server ./src/demo.html",
+    "start": "npm run build; http-server ./src",
+    "start-demo": "npm run build; http-server ./src/demo.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
