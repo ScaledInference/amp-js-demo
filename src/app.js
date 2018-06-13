@@ -9,8 +9,7 @@ const shoppingCart = { cart };
 window.addEventListener('DOMContentLoaded', (e) => {
   handleNavigation();
 
-  // Use Amp decision to take action on button color
-  const ctaBtn = decision.ctaColor;
+  const ctaBtn = document.querySelector('.ctaBtn');
 
   ctaBtn.addEventListener('click', (e) => {
     const label = e.target.textContent;
