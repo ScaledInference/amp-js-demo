@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   handleNavigation();
 
   const ctaBtn = document.querySelector('.ctaBtn');
+  ctaBtn.style.backgroundColor = decision.ctaColor;
 
   ctaBtn.addEventListener('click', (e) => {
     const label = e.target.textContent;
@@ -83,6 +84,7 @@ function handleNavigation() {
 
     //TODO: observe outcome and include total as a property
     
+
     break;
     
     default:
