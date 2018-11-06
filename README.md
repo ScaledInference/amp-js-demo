@@ -14,8 +14,10 @@ The first step for integrating Amp with the Mobile Store (your app) is to set up
 
 
 #### Set up the website locally:
+``` javascript
 npm install
 npm run start
+```
 
 Visit http://localhost:8080 in a browser and verify that it loads correctly.
 
