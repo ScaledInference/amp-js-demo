@@ -5,7 +5,7 @@ export default function context() {
 
   let icon = '';
   let result = '';
-  let useCase = document.querySelector('#stories') ? document.querySelector('#stories').value : ['connection', 'location', 'return', 'timeOfDay'][Math.floor(Math.random() * 4)];
+  let useCase = document.querySelector('#stories') !== null ? document.querySelector('#stories').value : ['connection', 'location', 'return', 'timeOfDay'][Math.floor(Math.random() * 4)];
 
   switch(useCase) {
     case 'connection':
