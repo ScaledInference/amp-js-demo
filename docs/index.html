@@ -5,25 +5,33 @@
 
     <link href='css/app.css' rel='stylesheet' />
 
+    <script>
+      window.ampConfig = {
+        sessionTTL: 0
+      };
+    </script>
     <!--  Replace MOCK_KEY_RANDOM with your Amp Project Key -->
     <script type='text/javascript' src='https://amp.ai/libs/03016c7832d5db5c.js'></script>
-    <script src='geo.js'></script>
   </head>
   <body>
-    <script>
+    <script type='module'>
+      import context from './context.js';
+
       // Context
-      const loc = geoLocation();
-      console.log(loc);
-      const newCustomer = Math.round(Math.random()) === 0 ? false : true;
+      const ctx = context();
 
       // Observe context
-      amp.observe('UserContext', { location: loc, newCustomer });
+      amp.observe('UserContext', { context: ctx });
 
       // Make decision
-      const decision = amp.decide('AmpedCart', {
-        ctaColor: ['rgb(253, 142, 25)', 'rgb(38, 138, 251)', 'rgb(225, 63, 63)'],
-        discount: [true, false],
-        freeShipping: [30, 60, 120]
+      const orange = 'rgb(253, 142, 25)';
+      const blue = 'rgb(38, 138, 251)';
+      const red = 'rgb(225, 63, 63)';
+
+      window.decision = amp.decide('AmpedCart', {
+        ctaColor: [orange, blue, red],
+        btnSequence: ['add', 'addBuy', 'addQuick', 'addBuyQuick'],
+        rushShipping: [0, 30, 120]
       });
     </script>
 

@@ -50,7 +50,10 @@ function handleNavigation() {
 
   switch (location.hash) {
     case '/', '':
-    main.innerHTML = setupProductPage();
+    main.innerHTML = Handlebars.templates.product(products);
+    listenersForCartButtons();
+    handleActions();
+    syncCartWithView();
     break;
 
     case '#/cart':
@@ -67,6 +70,13 @@ function handleNavigation() {
     ctaBtn.textContent = 'Submit Order';
 
     main.innerHTML = Handlebars.templates.checkout(shoppingCart);
+    const shipping = document.querySelector('.shipping');
+    if (decision.rushShipping === 0) {
+      shipping.style.visibility = 'hidden';
+    } else {
+      shipping.textContent = `Rush Shipping if you order in ${decision.rushShipping} minutes.`;
+      shipping.style.visibility = 'visible';
+    }
     document.querySelector('.checkoutBtn').style.backgroundColor = decision.ctaColor;
     break;
     
@@ -82,77 +92,92 @@ function handleNavigation() {
   }
 }
 
-function setupProductPage() {
-  const html = Handlebars.templates.product(products);
-  document.querySelector('.main').innerHTML = html;
+function handleActions() {
+  const buyButton = document.querySelectorAll('.buyNow');
+  const quickButton = document.querySelectorAll('.quick');
 
-  setTimeout(() => {
-    document.querySelectorAll('.product').forEach(element => { 
-      element.addEventListener('mouseover', (e) => {
-        element.querySelector('.overlay').className = 'overlay show';
-      });
+  document.querySelectorAll('.btn').forEach(btn => { 
+    btn.style.borderColor = decision.ctaColor;
+    btn.style.color = decision.ctaColor;
+  });
 
-      element.addEventListener('mouseout', (e) => {
-        element.querySelector('.overlay').className = 'overlay hide';
-      });
-    });
+  buyButton.forEach(btn => { btn.style.visibility = 'hidden'; });
+  quickButton.forEach(btn => { btn.style.visibility = 'hidden'; });
 
-    document.querySelectorAll('.addToCart').forEach(element => {
-      element.addEventListener('click', (e) => {
-        const target = e.target;
+  if (decision.btnSequence === 'addBuy') {
+    buyButton.forEach(btn => { btn.style.visibility = 'visible'; });
+  } else if (decision.btnSequence === 'addQuick') {
+    quickButton.forEach(btn => {btn.style.visibility = 'visible'; });
+  } else if (decision.btnSequence === 'addBuyQuick') {
+    buyButton.forEach(btn => { btn.style.visibility = 'visible'; });
+    quickButton.forEach(btn => { btn.style.visibility = 'visible'; });
+  }
+}
 
-        let existingItem = false;
-        let cartSize = 0;
-        let total = 0;
+function listenersForCartButtons() {
+  document.querySelectorAll('.btn').forEach(element => {
+    element.addEventListener('click', (e) => {
+      const target = e.target;
 
-        // take action on discount from Amp decision
-        let discount = decision.discount ? 5 : 0;
-        
-        cart.items.forEach(item => {
-          if (item.id === target.dataset.id) {
-            item.quantity = parseInt(item.quantity, 10) + 1;
-            item.subtotal = parseFloat(item.quantity, 10) * parseFloat(item.price, 10).toFixed(2);
-            existingItem = true;
-          }
+      let existingItem = false;
+      let cartSize = 0;
+      let total = 0;
+
+      cart.items.forEach(item => {
+        if (item.id === target.dataset.id) {
+          item.quantity = parseInt(item.quantity, 10) + 1;
+          item.subtotal = parseFloat(item.quantity, 10) * parseFloat(item.price, 10).toFixed(2);
+          existingItem = true;
           
-          cartSize += parseInt(item.quantity, 10);
-          total += parseFloat(item.quantity, 10) * parseFloat(item.price, 10);
+          const targetQuantity = target.parentElement.parentElement.querySelector('.quantity');
+          targetQuantity.textContent = `Quantity: ${item.quantity}`;
+        }
+        
+        
+        cartSize += parseInt(item.quantity, 10);
+        total += parseFloat(item.quantity, 10) * parseFloat(item.price, 10);
+      });
+      
+      
+      if (!existingItem) {
+        cart.items.push({
+          id: target.dataset.id,
+          name: target.dataset.name,
+          description: target.dataset.description,
+          price: target.dataset.price,
+          quantity: 1,
+          subtotal: 1 * parseFloat(target.dataset.price, 10)
         });
         
-        
-        if (!existingItem) {
-          cart.items.push({
-            id: target.dataset.id,
-            name: target.dataset.name,
-            description: target.dataset.description,
-            price: target.dataset.price,
-            quantity: 1,
-            subtotal: 1 * parseFloat(target.dataset.price, 10)
-          });
-          
-          cartSize += 1;
-          total += 1 * parseFloat(target.dataset.price, 10);
-        } 
+        const targetQuantity = target.parentElement.parentElement.querySelector('.quantity');
+        targetQuantity.textContent = `Quantity: 1`;
 
-        cart.total = parseFloat(total, 10).toFixed(2);
-        if (discount !== 0) {
-          cart.discount = discount;
-          cart.discountTotal = parseFloat(total - total * (discount / 100), 10).toFixed(2);
-        }
+        cartSize += 1;
+        total += 1 * parseFloat(target.dataset.price, 10);
+      } 
 
-        // use Amp decision for free shipping
-        cart.shipping = decision.freeShipping;
+      cart.total = parseFloat(total, 10).toFixed(2);
 
-        document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
-      });
+      if (target.textContent === 'Buy Now') {
+        location.hash = '/checkout';
+      } else if (target.textContent === 'Quick Checkout') {
+        location.hash = '/thank_you';
+      }
+
+      document.querySelector('.ctaBtn').textContent = `Cart - ${cartSize} Items`;
     });
-  }, 500);
+  });
+}
 
+function syncCartWithView() {
   let numItems = 0;
   cart.items.forEach(item => {
     numItems += parseInt(item.quantity, 10);
+
+    const productIdElement = document.querySelector('[data-id=\"' +item.id+ '\"]');
+    const targetQuantity = productIdElement.parentElement.parentElement.querySelector('.quantity');
+    targetQuantity.textContent = `Quantity: ${item.quantity}`;
   });
 
   document.querySelector('.ctaBtn').textContent = `Cart - ${numItems} Items`;
-  return html;
 }

@@ -5,7 +5,7 @@ export default function context() {
 
   let icon = '';
   let result = '';
-  let useCase = document.querySelector('#stories').value;
+  let useCase = document.querySelector('#stories') ? document.querySelector('#stories').value : ['connection', 'location', 'return', 'timeOfDay'][Math.floor(Math.random() * 4)];
 
   switch(useCase) {
     case 'connection':
@@ -96,8 +96,10 @@ export default function context() {
     context = { slowConnection: Math.round(Math.random()) === 0 ? false : true };
   }
 
-  document.querySelector('.context .content .icon').textContent = icon;
-  document.querySelector('.context .content .label').textContent = result;
+  if (document.querySelector('.context')) { // demo
+    document.querySelector('.context .content .icon').textContent = icon;
+    document.querySelector('.context .content .label').textContent = result;
+  }
 
   return context;
 }

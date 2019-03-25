@@ -16,82 +16,92 @@
     </script>
   </head>
   <body>
-    <div class="demo">
-      <div class="hud">
-        <div class="stories">
-          <label for="stories">Choose the context you're interested in:</label>
-          <select name="stories" id="stories" class="round">
-            <option value="connection" >Connection</option>
-            <option value="location">Location</option>
-            <option value="return">Return Customers</option>
-            <option value="timeOfDay">Time of Day</option>
-          </select>
+    <div class='demo'>
+      <div class='hud'>
+        <div class='key'>
+            <input id="key" placeholder="Project key" spellcheck="false" />
+            <div>Amp.ai Project Key</div>
+            <script>      
+              document.querySelector("#key").value = localStorage.getItem("key");
+            </script>
         </div>
-        <div class="actions">
+        <div class='actions'>
           <button class='run' data-count=0>Run</button>
           <button class='runMany'>Run Many</button>
         </div>
       </div>
       <div class='context'>
-        <div class="title">
+        <div class='title'>
           <div>Context</div>
         </div>
-        <div class="content">
-          <div class="description">
-            Observe events or properties that provide context for this run.
+        <div class='content'>
+          <div class='description'>
+            <p>
+              Observe events or properties that provide context for this run.
+            </p>
+            <div class='stories'>
+              <label for='stories'>Choose the context you're interested in:</label>
+              <select name='stories' id='stories' class='round'>
+                <option value='connection' >Connection</option>
+                <option value='location'>Location</option>
+                <option value='return'>Return Customers</option>
+                <option value='timeOfDay'>Time of Day</option>
+              </select>
+            </div>
           </div>
-          <div class="result">
-            <div class="icon">☀️</div>
-            <div class="label">Afternoon</div>
+          <div class='result'>
+            <div class='icon'>🐢</div>
+            <div class='label'>Slow Connection</div>
           </div>
         </div>
       </div>
-      <div class="actions">
-        <div class="title">
+      <div class='actions'>
+        <div class='title'>
           <div>Actions</div>
         </div>
-        <div class="content">
-          <div class="description">
+        <div class='content'>
+          <div class='description'>
             Decide properties that affect the behavior or experience in this run.
           </div>
-          <div class="products">
-            <div class="variant1">
-              <div class="result">
-                <div class="icon"></div>
-                <div class="label">CTA Color</div>
+          <div class='products'>
+            <div class='variant1'>
+              <div class='result'>
+                <div class='icon'></div>
+                <div class='label'>CTA Color</div>
               </div>
             </div>
-            <div class="variant2">
-              <div class="result">
-                <div class="icon">
-                  <button class="add">Add</button>
-                  <button class="buy">Buy Now</button>
-                  <button class="quick">Quick Checkout</button>
+            <div class='variant2'>
+              <div class='result'>
+                <div class='icon'>
+                  <button class='add'>Add</button>
+                  <button class='buy'>Buy Now</button>
+                  <button class='quick'>Quick Checkout</button>
                 </div>
-                <div class="label">Button Options</div>
+                <div class='label'>1/2/3-Step Checkout</div>
               </div>
             </div>
-            <div class="variant3">
-              <div class="result">
-                <div class="icon">📦</div>
-                <div class="unit">minutes</div>
-                <div class="label">Rush Shipping</div>
+            <div class='variant3'>
+              <div class='result'>
+                  <div class='unit'>order in</div>
+                <div class='icon'>30</div>
+                <div class='unit'>minutes</div>
+                <div class='label'>Rush Shipping</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="outcome">
-        <div class="title">
+      <div class='outcome'>
+        <div class='title'>
           <div>Outcome</div>
         </div>
-        <div class="content">
-          <div class="description">
+        <div class='content'>
+          <div class='description'>
               Observe events or properties used to measure success in this run.
           </div>
-          <div class="result">
-            <div class="icon">🚫</div>
-            <div class="label">No Sale</div>
+          <div class='result'>
+            <div class='icon'>🚫</div>
+            <div class='label'>No Sale</div>
           </div>
         </div>
       </div>
